@@ -1,0 +1,52 @@
+*ALL*
+- Move alert checking to before database opening.
+- Possibly add in more error checking; does database/cfg file exist
+- Clean up CSS
+- Password obfusication
+- Verify pin/permission or turned off in admin code
+- Improve performance by relying on SQL instead of importing all and then sifting through
+- Add listing for related events
+- Sort order on event list after new ticket and new data
+- Sort all lists in ascending before rendering(status, category, etc)
+- All entries editable and deleteable
+- Audit for all edits and deletes
+- Add Type option(for classification/network options)
+
+*New Ticket*
+
+
+*List Tickets*
+- Search by date, technician, status, category
+- Add categories
+- Option for recent tickets (past X days)
+- Add Ticket ID (instead of date)
+- Allow for ticket deletion by admin
+- Allow for ticket update edits by user who created
+- Show last modified
+
+*Technicians*
+- Add edit button/column
+- Editing functions for admin/user to change pin, perm, etc
+- Create new technician window, function, etc
+- Create permission ID to string function
+- Technician username based on first/last combo
+- Allow only admin to delete
+- Capitalize only first letter in name
+- Remove any spaces
+- Move into Admin as sub-menu
+
+*Admin*
+- Select database
+- Create cfg file
+- Archive database
+- New database password
+- Allow only admin to use
+- Add/edit/delete categories prime, secondary
+- Add/edit/delete statuses
+- Verify pin/permission or turned off in admin options
+
+*Reports*
+
+*Audit*
+
+*Info*

@@ -1,0 +1,3400 @@
+<head>
+<HTA:APPLICATION
+  ID="objMSL"
+  APPLICATIONNAME="MSL"
+  VERSION="1.1.10a"
+  ICON="MSL.ico"
+  SINGLEINSTANCE="yes"
+  CONTEXTMENU="no"/>
+     
+<title>Organization MSL</title>
+
+<style type="text/css">
+
+body {
+	background-color: "lightblue";
+}
+
+input {
+	background-color: #E5E5FF;
+}
+
+select {
+	background-color: #E5E5FF;
+}
+
+div.title_bar {
+	border-bottom-style: solid;
+	border-width: 1px;
+}
+
+div.Odd {
+	background-color: #E5E5FF;
+	border-style: solid;
+	border-width: 1px;	
+}
+
+div.Even {
+	background-color: #BBCFFF;
+	border-style: solid;
+	border-width: 1px;	
+}
+
+div.list_Cat {
+    width: 100%;
+	height: 400px;
+	overflow: auto;
+}
+
+div.PCat_list {
+    width: 420px;
+    float: left;
+}
+
+div.SCat_list {
+    position: absolute;
+    float: right;
+}
+
+select.status_select {
+	position: absolute;
+	left: 90px;
+}
+
+span.tech_select {
+	position: absolute;
+	left: 90px;
+}
+
+span.tech_id {
+	position: absolute;
+	left: 10px;
+}
+
+span.tech_nameU {
+	position: absolute;
+	left: 70px;
+}
+
+span.tech_nameF {
+	position: absolute;
+	left: 175px;
+}
+
+span.tech_nameL {
+	position: absolute;
+	left: 270px;
+}
+
+span.tech_perm {
+	position: absolute;
+	left: 375px;
+}
+
+span.del_tech_span {
+	position: absolute;
+	left: 425px;
+}
+
+span.tech_id_title {
+	position: absolute;
+	left: 5px;
+}
+
+span.tech_nameU_title {
+	position: absolute;
+	left: 65px;
+}
+
+span.tech_nameF_title {
+	position: absolute;
+	left: 170px;
+}
+
+span.tech_nameL_title {
+	position: absolute;
+	left: 265px;
+}
+
+span.tech_perm_title {
+	position: absolute;
+	left: 370px;
+}
+
+span.tech_delete_title {
+	position: absolute;
+	left: 420px;
+}
+
+input.new_Event_desc {
+	position: absolute;
+	left: 90px;
+	width: 500px;
+}
+
+input.edit_Event_desc {
+	width: 500px;
+}
+
+span.Stat_id_title {
+	position: absolute;
+	left: 15px;
+}
+
+span.Stat_name_title {
+	position: absolute;
+	left: 50px;
+}
+
+span.Stat_delete_title {
+	position: absolute;
+	left: 140px;
+}
+
+span.Stat_id {
+	position: absolute;
+	left: 20px;
+}
+span.Stat_name {
+	position: absolute;
+	left: 55px;
+}
+span.Stat_delete {
+	position: absolute;
+	left: 145px;
+}
+span.PCat_id_title {
+	position: absolute;
+	left: 15px;
+}
+span.PCat_name_title {
+	position: absolute;
+	left: 50px;
+}
+span.PCat_delete_title {
+	position: absolute;
+	left: 140px;
+}
+span.PCat_id {
+	position: absolute;
+	left: 20px;
+}
+span.PCat_name {
+	position: absolute;
+	left: 55px;
+}
+span.PCat_delete {
+	position: absolute;
+	left: 145px;
+}
+span.SCat_id_title {
+	position: absolute;
+	left: 15px;
+}
+span.SCat_name_title {
+	position: absolute;
+	left: 50px;
+}
+span.PSCat_ID_title {
+	position: absolute;
+	left: 140px;
+}
+span.SCat_delete_title {
+	position: absolute;
+	left: 230px;
+}
+span.SCat_id {
+	position: absolute;
+	left: 20px;
+}
+span.SCat_name {
+	position: absolute;
+	left: 55px;
+}
+span.PSCat_ID {
+	position: absolute;
+	left: 145px;
+}
+span.SCat_delete {
+	position: absolute;
+	left: 235px;
+}
+
+span.Event_data_data {
+	height: 220px;
+	width: 99%;
+	overflow-y: auto;
+    overflow-x: hidden;
+	border: 1px solid #666;
+	padding: 8px;
+	background-color: #BBCFFF;
+    word-wrap: break-word;
+}
+
+span.Event_list {
+	height: 220px;
+	width: 99%;
+	overflow: auto;
+    overflow-x: hidden;
+	border: 1px solid #666;
+	padding: 8px;
+	background-color: #BBCFFF;
+}
+
+textarea.add_data_text {
+	height: 220px;
+	width: 99%;
+	border: 1px solid #666;
+	padding: 8px;
+	background-color: #E5E5FF;
+    overflow: auto;
+}
+	
+.button {   
+	color: "white";   
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif;   
+	background-color: "blue";   
+	border:1px solid;   
+	border-color: "grey"; 
+}
+
+.med_button {
+	width: 100px; 
+}
+
+.red {
+	color: #FF0000;
+}
+
+.green {
+	color: #009F00;
+}
+
+.blue {
+	color: #0000FF;
+}
+
+.Event_id
+{
+    position: absolute;
+    left: 10px;
+	padding-left: 5px;
+    text-align: right;
+}
+
+.Event_date
+{
+    position: absolute;
+    left: 60px;
+    border-left-style:solid;
+	border-width:1px;
+	padding-left: 5px;
+}
+
+.Event_status
+{
+    position: absolute;
+    left: 155px;
+	border-left-style:solid;
+	border-width:1px;
+	padding-left: 5px;
+}
+
+.Event_Priority
+{
+    position: absolute;
+    left: 260px;
+	border-left-style:solid;
+	border-width:1px;
+	padding-left: 5px;
+}
+
+.Event_PCat
+{
+    position: absolute;
+    left: 365px;
+	border-left-style:solid;
+	border-width:1px;
+	padding-left: 5px;
+}
+
+.Event_SCat
+{
+    position: absolute;
+    left: 470px;
+	border-left-style:solid;
+	border-width:1px;
+	padding-left: 5px;
+}
+
+
+.Event_tech
+{
+    position: absolute;
+    left: 575px;
+	border-left-style:solid;
+	border-width:1px;
+	padding-left: 5px;
+}
+
+.Event_desc
+{
+    position: absolute;
+    left: 680px;
+	border-left-style:solid;
+	border-width:1px;
+	padding-left: 5px;
+    white-space: nowrap;
+}
+
+.Event_id_title
+{
+    position: absolute;
+    left: 15px;
+	padding-left: 5px;
+}
+
+.Event_date_title
+{
+    position: absolute;
+    left: 70px;
+	padding-left: 5px;
+}
+
+.Event_status_title
+{
+    position: absolute;
+    left: 165px;
+	padding-left: 5px;
+}
+
+.Event_Priority_title
+{
+    position: absolute;
+    left: 270px;
+	padding-left: 5px;
+}
+
+.Event_PCat_title
+{
+    position: absolute;
+    left: 375px;
+	padding-left: 5px;
+}
+
+.Event_SCat_title
+{
+    position: absolute;
+    left: 480px;
+	padding-left: 5px;
+}
+
+.Event_tech_title
+{
+    position: absolute;
+    left: 585px;
+	padding-left: 5px;
+}
+
+.Event_desc_title
+{
+    position: absolute;
+    left: 690px;
+	padding-left: 5px;
+}
+
+.note
+{
+    font-size: 60%;
+}
+</style>
+
+</head>
+
+<script language="VBScript">
+' -ON LOAD-
+Sub Window_onLoad
+    window.resizeTo 1400,800
+	MainMenu_S
+End Sub
+
+' -GLOBALS-
+Const adOpenStatic = 3
+Const adLockOptimistic = 3
+filename = "DATA"
+active_window = 0
+menu_selected = 0
+Dim recentTemp : recentTemp = False
+Dim selected_Event
+Dim current_Obj
+Dim timeSelect_Event
+
+' -SUBROUTINES-
+Sub Exit_S
+	self.close()
+End Sub
+
+Sub add_database_S
+    'Create Database
+    datasource = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb"
+    Set Catalog = CreateObject("ADOX.Catalog")
+    Catalog.Create datasource
+    
+    'Create Tables
+    Catalog.ActiveConnection = datasource
+    Dim new_table
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Event"
+    new_table.Columns.Append "EventID", 3
+    new_table.Columns.Append "EventDate", 7
+	'new_table.Columns.Append "ModDate", 7
+    new_table.Columns.Append "StatusID", 3
+	new_table.Columns.Append "PriorityID", 3
+	'new_table.Columns.Append "TypeID", 3
+    new_table.Columns.Append "PrimeCatID", 3
+    new_table.Columns.Append "SecondCatID", 3
+    new_table.Columns.Append "TechID", 3
+    new_table.Columns.Append "EventDesc", 202, 80
+    new_table.Columns.Append "EventDeleted", 11
+    new_table.Keys.Append "PK_Event_EventID", 1, "EventID"
+    catalog.Tables.Append new_table
+    
+    'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Updates"
+    new_table.Columns.Append "UpdateID", 3
+    new_table.Columns.Append "UpdateDate", 7
+    new_table.Columns.Append "EventID", 3
+    new_table.Columns.Append "TechID", 3
+    new_table.Columns.Append "UpdateData", 203, 2000
+	new_table.Columns.Append "UpdateDeleted", 11
+    new_table.Keys.Append "PK_Update_UpdateID", 1, "UpdateID"
+    catalog.Tables.Append new_table
+    
+    'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Tech"
+    new_table.Columns.Append "TechID", 3
+    new_table.Columns.Append "TechUName", 202, 15
+    new_table.Columns.Append "TechFName", 202, 15
+    new_table.Columns.Append "TechLName", 202, 15
+    new_table.Columns.Append "TechPin", 3
+    new_table.Columns.Append "TechPerm", 3
+    new_table.Columns.Append "TechDeleted", 11
+    new_table.Keys.Append "PK_Tech_TechID", 1, "TechID"
+    catalog.Tables.Append new_table
+    
+    'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Status"
+    new_table.Columns.Append "StatusID", 3
+    new_table.Columns.Append "StatusName", 202, 15
+    new_table.Columns.Append "StatusDeleted", 11
+    new_table.Keys.Append "PK_Status_StatusID", 1, "StatusID"
+    catalog.Tables.Append new_table
+	
+	'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Priority"
+    new_table.Columns.Append "PriorityID", 3
+    new_table.Columns.Append "PriorityName", 202, 15
+    new_table.Columns.Append "PriorityDeleted", 11
+    new_table.Keys.Append "PK_Priority_PriorityID", 1, "PriorityID"
+    catalog.Tables.Append new_table
+    
+    'Clear table
+    'Set new_table = Nothing
+	
+	'set new_table = createobject("ADOX.Table")
+    'new_table.Name = "Type"
+    'new_table.Columns.Append "TypeID", 3
+    'new_table.Columns.Append "TypeName", 202, 15
+    'new_table.Columns.Append "TypeDeleted", 11
+    'new_table.Keys.Append "PK_Type_TypeID", 1, "TypeID"
+    'catalog.Tables.Append new_table
+    
+    'Clear table
+    Set new_table = Nothing
+	
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "PrimeCat"
+    new_table.Columns.Append "PrimeCatID", 3
+    new_table.Columns.Append "PrimeCatName", 202, 15
+    new_table.Columns.Append "PrimeCatDeleted", 11
+    new_table.Keys.Append "PK_PrimeCat_PrimeCatID", 1, "PrimeCatID"
+    catalog.Tables.Append new_table
+    
+    'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "SecondCat"
+    new_table.Columns.Append "SecondCatID", 3
+    new_table.Columns.Append "PrimeCatID", 3
+    new_table.Columns.Append "SecondCatName", 202, 15
+    new_table.Columns.Append "SecondCatDeleted", 11
+    new_table.Keys.Append "PK_SecondCat_SecondCatID", 1, "SecondCatID"
+    catalog.Tables.Append new_table
+    
+    'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Alert"
+    new_table.Columns.Append "AlertID", 3
+    new_table.Columns.Append "AlertDate", 7
+    new_table.Columns.Append "AlertData", 203, 500
+    new_table.Columns.Append "AlertStart", 7
+    new_table.Columns.Append "AlertEnd", 7
+    new_table.Columns.Append "AlertAssigned", 202, 200
+    new_table.Columns.Append "AlertChecked", 202, 200
+    new_table.Columns.Append "TechID", 3
+    new_table.Columns.Append "AlertDeleted", 11
+    new_table.Keys.Append "PK_Alert_AlertID", 1, "AlertID"
+    catalog.Tables.Append new_table
+    
+    'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Audit"
+    new_table.Columns.Append "AuditID", 3
+    new_table.Columns.Append "AuditDate", 7
+    new_table.Columns.Append "TechID", 3
+    new_table.Columns.Append "AuditEvent", 202, 100
+    new_table.Keys.Append "PK_Audit_AuditID", 1, "AuditID"
+    catalog.Tables.Append new_table
+	
+	'Clear table
+    Set new_table = Nothing
+    
+    set new_table = createobject("ADOX.Table")
+    new_table.Name = "Phone"
+    new_table.Columns.Append "PhoneID", 3
+    new_table.Columns.Append "PhoneNumber", 3
+    new_table.Columns.Append "PhoneType", 202, 5
+    new_table.Columns.Append "PhoneLocation", 202, 15
+	new_table.Columns.Append "PhoneOrganization", 202, 15
+	new_table.Columns.Append "PhoneDescription", 202, 80
+    new_table.Keys.Append "PK_Phone_PhoneID", 1, "PhoneID"
+    catalog.Tables.Append new_table
+    
+    'Clean Up
+    Set new_table = Nothing
+    Set Catalog = Nothing
+End Sub
+
+Sub clear_all_S
+	top_window.InnerHTML = ""
+	bottom_window.InnerHTML = ""
+End Sub
+
+Sub MainMenu_S
+    active_window = 0
+    clear_all_S
+	title_heading.InnerHTML = "Main Menu"
+	
+    Dim tempmain
+    tempmain = "<div id=""main_menu"" class=""menu"">" & _
+                "<input class=""button med_button"" type=""button"" value=""New Event"" id=""new_Event_B""  onClick=""NewEvent_S""><br />" & _
+                "<input class=""button med_button"" type=""button"" value=""List Events"" id=""List_Events_B""  onClick=""Events_S""><br />" & _
+                "<input class=""button med_button"" type=""button"" value=""Reports"" id=""Reports_B""  onClick=""Reports_S""><br />" & _
+				"<input class=""button med_button"" type=""button"" value=""Admin"" id=""Admin_B""  onClick=""Admin_S""><br />" & _
+				"</div>"
+				
+    top_window.InnerHTML = tempmain
+End Sub
+
+Sub OpenEvents_S
+	call list_Events_F(0,"*","Event",0,0,1,0,0,0,0,"","EventDate","EventID","DESC")
+End Sub
+
+Sub RecentEvents_S
+	Dim StartDate, EndDate, Day_Start, Day_End, Month_Start, Month_End, Year_Start, Year_End
+	
+	Day_Start = Day(DateAdd("d",-5,Now))
+	Month_Start = Month(DateAdd("d",-5,Now))
+	Year_Start = Year(DateAdd("d",-5,Now))
+	Day_End = Day(Now)
+	Month_End = Month(Now)
+	Year_End = Year(Now)
+	
+	StartDate = Day_Start & "/" & MonthName(Month_Start,True) & "/" & Year_Start
+	EndDate = Day_End & "/" & MonthName(Month_End,True) & "/" & Year_End
+	
+	call list_Events_F(0,"*","Event",StartDate,EndDate,0,0,0,0,0,"","EventDate","EventID","DESC")
+End Sub
+
+Sub SelectEvents_S
+	Dim StartDate, EndDate
+	
+	allDate = document.getElementByID("All_Date_select").checked
+	Day_Start = document.getElementByID("Day_Start_select").value
+	Month_Start = document.getElementByID("Month_Start_select").value
+	Year_Start = document.getElementByID("Year_Start_select").value
+	Day_End = document.getElementByID("Day_End_select").value
+	Month_End = document.getElementByID("Month_End_select").value
+	Year_End = document.getElementByID("Year_End_select").value
+	Status = document.getElementByID("Status_select").value
+	Priority = document.getElementByID("Priority_select").value
+	Tech = document.getElementByID("Tech_select").value
+	PCat = document.getElementByID("primecat_select").value
+	SCat = document.getElementByID("secondcat_select").value
+	Sort1 = document.getElementByID("Sort1_select").value
+	Sort2 = document.getElementByID("Sort2_select").value
+	SortDir = document.getElementByID("SortDir_select").value
+	FindText = document.getElementByID("Find_Text_text").value
+	
+	StartDate = Day_Start & "/" & MonthName(Month_Start,True) & "/" & Year_Start
+	EndDate = Day_End & "/" & MonthName(Month_End,True) & "/" & Year_End
+	
+	If allDate = False Then
+		call list_Events_F(0,"Event.*","Event",StartDate,EndDate,Status,Priority,Tech,PCat,SCat,FindText,Sort1,Sort2,SortDir)
+	ElseIf allDate = True Then
+		call list_Events_F(0,"Event.*","Event",0,0,Status,Priority,Tech,PCat,SCat,FindText,Sort1,Sort2,SortDir)
+	Else
+		event_alert.InnerHTML = "Invalid Start or End Date."
+	End If
+End Sub
+
+Sub Events_S
+	clear_all_S
+	title_heading.InnerHTML = "Events"
+	
+	dim temp
+	
+	temp = "<div id=""Events"" class=""Events"">" & _
+			"&nbsp;&nbsp;All Dates: <input type=""radio"" name=""Date_Select"" id=""All_Date_Select"" onClick=""Disable_Date_Input_F(0)"">" & _
+			"&nbsp;&nbsp;&nbsp;&nbsp;Recent Dates: <input type=""radio"" name=""Date_Select"" id=""Recent_Date_Select"" checked=true onClick=""Disable_Date_Input_F(1)"">" & _
+			"&nbsp;&nbsp;&nbsp;&nbsp;Sepecfic Dates: <input type=""radio"" name=""Date_Select"" id=""Specific_Date_Select"" onClick=""Disable_Date_Input_F(2)"">" & _
+			"<br />&nbsp;&nbsp;Start Date: &nbsp;<span id=""StartDate_Span"" class=""StartDate_Span"">" & select_Date_F("Start",1) & "</span>" & _
+			"<br />&nbsp;&nbsp;End Date: &nbsp;<span id=""EndDate_Span"" class=""EndDate_Span"">" & select_Date_F("End",0) & "</span>" & _
+			"<p />&nbsp;&nbsp;Status: &nbsp;" & select_Stat_F("Status",-1) & _
+			"<br />&nbsp;&nbsp;Priority: &nbsp;" & select_Priority_F("Priority",-1) & _
+			"<br />&nbsp;&nbsp;Assigned Technician: &nbsp;" & select_tech_F("Tech",0,-1) & _
+			"<br />&nbsp;&nbsp;Category: &nbsp;" & select_PrimeCat_F("primecat",1,0) & _
+			"<br />&nbsp;&nbsp;Sub Category: &nbsp;<span id=""SecondCat_Span"" class=""SecondCat_Span""></span>" & _
+			"<br />&nbsp;&nbsp;Search Text:&nbsp;<input type=""text"" class=""text_med"" id=""Find_Text_text"" maxlength=""12"">" & _
+			"<p />&nbsp;&nbsp;Sort Order: &nbsp; 1st:&nbsp;" & select_Sort_F("Sort1",0) & _
+			"&nbsp;&nbsp;&nbsp; 2nd:&nbsp;" & select_Sort_F("Sort2",1) & _
+			"&nbsp;&nbsp;&nbsp; Direction:&nbsp;" & select_SortDir_F("SortDir") & _
+			"<p /><input class=""button"" type=""button"" value=""List"" id=""SelectEvents_B""  onClick=""SelectEvents_S"">" & _
+			"&nbsp;&nbsp;&nbsp;<span id=""event_alert"" class=""event_alert red""></span>" & _
+			"</div>"
+	
+	top_window.InnerHTML = temp
+	Disable_Date_Input_F(1)
+	SecondCat_Span.InnerHTML = select_SecondCat_F("secondcat",0,selectSCat)
+End Sub
+
+Function select_Sort_F(temp, selected)
+	If selected = 1 Then
+		none_t = "<option value="""">None</option>"
+	Else
+		selectedT = "selected=""selected"""
+	End If
+	
+	SortSelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select"">" & none_t & _
+				"<option value=""EventID"">Event ID</option>" & _
+				"<option value=""EventDate""" & selectedT & ">Date</option>" & _
+				"<option value=""StatusID"">Status</option>" & _
+				"<option value=""PriorityID"">Priority</option>" & _
+				"<option value=""PrimeCatID"">Prime Cat</option>" & _
+				"<option value=""SecondCatID"">Sub Cat</option>" & _
+				"<option value=""TechID"">Technician</option>" & _
+				"</select>"
+				'"<option value=""EventModified"">Date Modified</option>" & _
+	
+	select_Sort_F = SortSelect
+End Function
+
+Function select_SortDir_F(temp)
+	SortDirSelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select"">"& _
+				"<option value=""ASC"">ASC</option>" & _
+				"<option value=""DESC"" selected=""selected"">DESC</option>" & _
+				"</select>"
+	
+	select_SortDir_F = SortDirSelect
+End Function
+
+Function Disable_Date_Input_F(checkedValue)
+	If checkedValue = 0 Then
+		document.getElementByID("Day_Start_select").disabled = true
+		document.getElementByID("Day_End_select").disabled = true
+		document.getElementByID("Month_Start_select").disabled = true
+		document.getElementByID("Month_End_select").disabled = true
+		document.getElementByID("Year_Start_select").disabled = true
+		document.getElementByID("Year_End_select").disabled = true
+	ElseIf checkedValue = 1 Then
+		StartDate_Span.InnerHTML = select_Date_F("Start",1)
+		EndDate_Span.InnerHTML = select_Date_F("End",0)
+		
+		document.getElementByID("Day_Start_select").disabled = true
+		document.getElementByID("Day_End_select").disabled = true
+		document.getElementByID("Month_Start_select").disabled = true
+		document.getElementByID("Month_End_select").disabled = true
+		document.getElementByID("Year_Start_select").disabled = true
+		document.getElementByID("Year_End_select").disabled = true
+	ElseIf checkedValue = 2 Then
+		document.getElementByID("Day_Start_select").disabled = false
+		document.getElementByID("Day_End_select").disabled = false
+		document.getElementByID("Month_Start_select").disabled = false
+		document.getElementByID("Month_End_select").disabled = false
+		document.getElementByID("Year_Start_select").disabled = false
+		document.getElementByID("Year_End_select").disabled = false
+	End If
+End Function
+
+Sub Reports_S
+	clear_all_S
+	title_heading.InnerHTML = "Reports"
+	
+	dim temp
+	
+	temp = "<div id=""Reports"" class=""Reports"">" & _
+			"&nbsp;&nbsp;Start Date: &nbsp;" & select_Date_F("Start",1) & _
+			"<br />&nbsp;&nbsp;End Date: &nbsp;" & select_Date_F("End",0) & _
+			"<br />&nbsp;&nbsp;Detailed Event List: &nbsp; <input type=""checkbox"" id=""detailedReportCheck"" checked=""checked"">" & _
+			"<br />&nbsp;&nbsp;Include Unused Counts: &nbsp; <input type=""checkbox"" id=""includeZeroCheck"">" & _
+			"<br /><input class=""button"" type=""button"" value=""Generate"" id=""GenerateReport_B""  onClick=""GenerateReport_S"">" & _
+			"&nbsp;&nbsp;&nbsp;<span id=""report_alert"" class=""report_alert red""></span>" & _
+			"</div>"
+			' "<br />&nbsp;&nbsp;Status: &nbsp;" & select_Stat_F("Status",-1) & _
+			' "<br />&nbsp;&nbsp;Priority: &nbsp;" & select_Priority_F("Priority",-1) & _
+			' "<br />&nbsp;&nbsp;Assigned Technician: &nbsp;" & select_tech_F("Tech",0,-1) & _
+			' "<br />&nbsp;&nbsp;Category: &nbsp;" & select_PrimeCat_F("primecat",1,0) & _
+			' "<br />&nbsp;&nbsp;Sub Category: &nbsp;<span id=""SecondCat_Span"" class=""SecondCat_Span""></span>" & _
+			
+	top_window.InnerHTML = temp
+	'SecondCat_Span.InnerHTML = select_SecondCat_F("secondcat",0,selectSCat)
+End Sub
+
+Sub NewEvent_S
+    clear_all_S
+    title_heading.InnerHTML = "New Event"
+	
+    Dim tempnew
+    
+	tempnew = "<div id=""new_Event"" class=""new_Event"">" & _
+        "&nbsp;&nbsp;Status: &nbsp;" & select_Stat_F("new_status",0) & _
+		"&nbsp;&nbsp;Priority: &nbsp;" & select_Priority_F("new_Priority",0) & _
+        "&nbsp;&nbsp;Assigned Technician: &nbsp;" & select_tech_F("tech",0,-1) & _
+        "&nbsp;&nbsp;Category: &nbsp;" & select_PrimeCat_F("primecat",1,0) & _
+		"&nbsp;&nbsp;Sub Category: &nbsp;<span id=""SecondCat_Span"" class=""SecondCat_Span""></span>" & _
+        "<br />Description: &nbsp;<input type=""text"" class=""new_Event_desc"" id=""new_Event_desc_text"" maxlength=""80"">" & _
+        "<br /><br />Updates:" & _
+        "<br /><textarea class=""add_data_text"" id=""new_data_text"" maxlength=""2000""></textarea>" & _
+        "<br /><input class=""button"" type=""button"" value=""Save"" id=""new_Event_B""  onClick=""new_Event_S"">" & _
+		"&nbsp;&nbsp;" & select_tech_F("new_tech",0,1) & _
+        "&nbsp;&nbsp;<span id=""new_alert"" class=""new_alert""></span>" & _
+    "</div>"
+    
+    top_window.InnerHTML = tempnew
+	SecondCat_Span.InnerHTML = select_SecondCat_F("secondcat",0,selectSCat)
+End Sub
+
+Sub Admin_S
+	clear_all_S
+    title_heading.InnerHTML = "Admin Menu"
+	
+	Dim tempadmin
+    tempadmin = "<div id=""Admin"" class=""menu"">" & _
+                    "<input class=""button med_button"" type=""button"" value=""Setup"" id=""Setup_B""  onClick=""Setup_S""><br />" & _
+                    "<input class=""button med_button"" type=""button"" value=""Technicians"" id=""Tech_B""  onClick=""Tech_S""><br />" & _
+                    "<input class=""button med_button"" type=""button"" value=""Statuses"" id=""Status_B""  onClick=""Stat_S""><br />" & _
+					"<input class=""button med_button"" type=""button"" value=""Priority"" id=""Priority_B""  onClick=""Priority_S""><br />" & _
+                    "<input class=""button med_button"" type=""button"" value=""Categories"" id=""Cat_B""  onClick=""Cat_S""><br />" & _
+                    "<input class=""button med_button"" type=""button"" value=""Release Notes"" id=""notes_B""  onClick=""release_notes_S""><br />" & _
+                "</div>"
+    top_window.InnerHTML = tempadmin
+End Sub
+
+Sub Stat_S
+    clear_all_S
+    title_heading.InnerHTML = "Status Setup"
+    
+    Dim tempStat
+
+    tempStat = "<div id=""view_Stat"" class=""view_Stat"">" & _
+                    "<span id=""list_Stat"" class=""list_Stat""></span><br /><br />" & _
+                    "<input class=""button"" type=""button"" value=""Add New"" id=""add_Statview_B""  onClick=""add_Statview_S"">" & _
+                "</div>"
+    
+    top_window.InnerHTML = tempStat
+    
+    list_Stat_S
+End Sub
+
+Sub Priority_S
+    clear_all_S
+    title_heading.InnerHTML = "Priority Setup"
+    
+    Dim tempPriority
+
+    tempPriority = "<div id=""view_Priority"" class=""view_Priority"">" & _
+                    "<span id=""list_Priority"" class=""list_Priority""></span><br /><br />" & _
+                    "<input class=""button"" type=""button"" value=""Add New"" id=""add_Priorityview_B""  onClick=""add_Priorityview_S"">" & _
+                "</div>"
+    
+    top_window.InnerHTML = tempPriority
+    
+    list_Priority_S
+End Sub
+
+Sub Cat_S
+    clear_all_S
+    title_heading.InnerHTML = "PrimeCat Setup"
+    
+    Dim tempCat
+
+    tempCat = "<div id=""view_Cat"" class=""view_Cat"">" & _
+                    "<div id=""list_Cat"" class=""list_Cat""></div><br /><br />" & _
+                    "<input class=""button"" type=""button"" value=""Add Prime Cat"" id=""add_PCatview_B""  onClick=""Add_PrimeCatView_S"">" & _
+                    "<input class=""button"" type=""button"" value=""Add Second Cat"" id=""add_SCatview_B""  onClick=""Add_SecondCatView_S"">" & _
+                "</div>"
+    
+    top_window.InnerHTML = tempCat
+    
+    list_Cat_S
+End Sub
+
+Sub Setup_S
+	clear_all_S
+    title_heading.InnerHTML = "Setup"
+	
+	Dim tempSetup
+    tempSetup = "<div id=""Setup"" class=""Setup"">" & _
+                    "New Database: <input type=""text"" class=""text_med"" id=""add_database_text"" maxlength=""12""><br />" & _
+                    "<input class=""button"" type=""button"" value=""Add Database"" id=""add_database_B""  onClick=""add_database_S"">" & _
+                "</div>"
+    top_window.InnerHTML = tempSetup
+End Sub
+
+Sub Add_StatView_S
+    add_Statview_B.style.display="none"
+    
+    Dim tempaddStat
+    tempaddStat = "<div id=""add_Stat"" class=""add_Stat"">" & _
+                    "New Status:" & _
+                    "<br />Status Name: <input type=""text"" class=""text_med"" id=""add_Stat_text"" maxlength=""12"">" & _
+                    "<input class=""button"" type=""button"" value=""Add"" id=""add_Stat_B""  onClick=""add_Stat_S"">" & _
+					"&nbsp;&nbsp;<input class=""button"" type=""button"" value=""Cancel"" id=""Cancel_Stat_B""  onClick=""Stat_S"">" & _
+                    "&nbsp;&nbsp;<span id=""Stat_alert"" class=""Stat_alert""></span>" & _
+                "</div>"
+    
+    bottom_window.InnerHTML = tempaddStat
+End Sub
+
+Sub list_Stat_S
+	StatOutput = "<span id=""Stat_id_title"" class=""Stat_id_title"">ID</span>" & _
+                "<span id=""Stat_name_title"" class=""Stat_name_title"">Name</span>" & _
+                "<span id=""Stat_delete_title"" class=""Stat_delete_title"">Delete</span>"
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Status"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("StatusDeleted") = True Then
+	  Else
+		StatOutput = StatOutput & "<br />" & "<span id=""Stat_id"" class=""Stat_id"">" & RS.Fields("StatusID") & "</span>" & _
+					"<span id=""Stat_name"" class=""Stat_name"">" & RS.Fields("StatusName") & "</span>" & _
+					"<span id=""Stat_delete"" class=""Stat_delete"">" & _
+						"<input class=""button sm_button"" type=""button"" value=""X"" id=""del_Stat_B""  onClick=""verify_del_Stat_F(" & RS.Fields("StatusID") & ")"" >" & _
+					"</span>"
+	  End If
+	  RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	list_Stat.InnerHTML = StatOutput
+End Sub
+
+Sub Add_Stat_S
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Status"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+	If RS.EOF Then
+		lastID = 0
+	Else
+		RS.MoveLast
+		lastID = RS.Fields("StatusID")
+	End If
+	StatName = document.getElementByID("add_Stat_text").value
+	 
+	temp = CInt(lastID) + 1
+	
+	If StatName = "" Then
+		Stat_alert.InnerHTML = "<span id=""Stat_alert_color"" class=""red"">Please enter a Status name.</span>"
+	Else
+		RS.AddNew
+		RS("StatusID") = temp
+        RS("StatusName") = StatName
+		RS.Update
+		RS.Close
+        CN.Close
+        Set CN = Nothing
+        Set RS = Nothing
+		
+		clear_all_S
+		Stat_S
+	End If
+End Sub
+
+Sub Add_PriorityView_S
+    add_Priorityview_B.style.display="none"
+    
+    Dim tempaddPriority
+    tempaddPriority = "<div id=""add_Priority"" class=""add_Priority"">" & _
+                    "New Priority:" & _
+                    "<br />Priority Name: <input type=""text"" class=""text_med"" id=""add_Priority_text"" maxlength=""12"">" & _
+                    "<input class=""button"" type=""button"" value=""Add"" id=""add_Priority_B""  onClick=""add_Priority_S"">" & _
+					"&nbsp;&nbsp;<input class=""button"" type=""button"" value=""Cancel"" id=""Cancel_Priority_B""  onClick=""Priority_S"">" & _
+                    "&nbsp;&nbsp;<span id=""Priority_alert"" class=""Priority_alert""></span>" & _
+                "</div>"
+    
+    bottom_window.InnerHTML = tempaddPriority
+End Sub
+
+Sub list_Priority_S
+	PriorityOutput = "<span id=""Priority_id_title"" class=""Priority_id_title"">ID</span>" & _
+                "<span id=""Priority_name_title"" class=""Priority_name_title"">Name</span>" & _
+                "<span id=""Priority_delete_title"" class=""Priority_delete_title"">Delete</span>"
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Priority"
+    
+    RS.Open SQL,CN,adOpenPriorityic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("PriorityDeleted") = True Then
+	  Else
+		PriorityOutput = PriorityOutput & "<br />" & "<span id=""Priority_id"" class=""Priority_id"">" & RS.Fields("PriorityID") & "</span>" & _
+					"<span id=""Priority_name"" class=""Priority_name"">" & RS.Fields("PriorityName") & "</span>" & _
+					"<span id=""Priority_delete"" class=""Priority_delete"">" & _
+						"<input class=""button sm_button"" type=""button"" value=""X"" id=""del_Priority_B""  onClick=""verify_del_Priority_F(" & RS.Fields("PriorityID") & ")"" >" & _
+					"</span>"
+	  End If
+	  RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	list_Priority.InnerHTML = PriorityOutput
+End Sub
+
+Sub Add_Priority_S
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Priority"
+    
+    RS.Open SQL,CN,adOpenPriorityic,adLockOptimistic
+		
+	If RS.EOF Then
+		lastID = 0
+	Else
+		RS.MoveLast
+		lastID = RS.Fields("PriorityID")
+	End If
+	PriorityName = document.getElementByID("add_Priority_text").value
+	 
+	temp = CInt(lastID) + 1
+	
+	If PriorityName = "" Then
+		Priority_alert.InnerHTML = "<span id=""Priority_alert_color"" class=""red"">Please enter a Priority name.</span>"
+	Else
+		RS.AddNew
+		RS("PriorityID") = temp
+        RS("PriorityName") = PriorityName
+		RS.Update
+		RS.Close
+        CN.Close
+        Set CN = Nothing
+        Set RS = Nothing
+		
+		clear_all_S
+		Priority_S
+	End If
+End Sub
+
+Sub Add_PrimeCatView_S
+    add_PCatview_B.style.display="none"
+    add_SCatview_B.style.display="none"
+    
+    Dim tempaddCat
+    tempaddCat = "<div id=""add_Cat"" class=""add_Cat"">" & _
+                    "New PrimeCat:" & _
+                    "<br />PrimeCat Name: <input type=""text"" class=""text_med"" id=""add_PCat_text"" maxlength=""12"">" & _
+                    "<input class=""button"" type=""button"" value=""Add"" id=""add_PCat_B""  onClick=""Add_PrimeCat_S"">" & _
+					"&nbsp;&nbsp;<input class=""button"" type=""button"" value=""Cancel"" id=""Cancel_PCat_B""  onClick=""Cat_S"">" & _
+                    "&nbsp;&nbsp;<span id=""Cat_alert"" class=""Cat_alert""></span>" & _
+                "</div>"
+    
+    bottom_window.InnerHTML = tempaddCat
+End Sub
+
+Sub Add_SecondCatView_S
+    add_SCatview_B.style.display="none"
+    add_PCatview_B.style.display="none"
+    
+    Dim tempaddCat
+    tempaddCat = "<div id=""add_Cat"" class=""add_Cat"">" & _
+                    "New SecondCat:" & _
+                    "<br />PrimeCat: " & select_PrimeCat_F("Prime_Second",0,0) & _
+                    "<br />SecondCat Name: <input type=""text"" class=""text_med"" id=""add_SCat_text"" maxlength=""12"">" & _
+                    "<input class=""button"" type=""button"" value=""Add"" id=""add_SCat_B""  onClick=""Add_SecondCat_S"">" & _
+					"&nbsp;&nbsp;<input class=""button"" type=""button"" value=""Cancel"" id=""Cancel_SCat_B""  onClick=""Cat_S"">" & _
+                    "&nbsp;&nbsp;<span id=""Cat_alert"" class=""Cat_alert""></span>" & _
+                "</div>"
+    
+    bottom_window.InnerHTML = tempaddCat
+End Sub
+
+Sub list_Cat_S
+	PCatOutput = "<div id=""PCat_list"" class=""PCat_list"">" & _
+				"Primary Categories:<br />" & _
+				"<span id=""PCat_id_title"" class=""PCat_id_title"">ID</span>" & _
+                "<span id=""PCat_name_title"" class=""PCat_name_title"">Name</span>" & _
+                "<span id=""PCat_delete_title"" class=""PCat_delete_title"">Delete</span>"
+                
+    SCatOutput = "<div id=""SCat_list"" class=""SCat_list"">" & _
+				"Secondary Categories:<br />" & _
+                "<span id=""SCat_id_title"" class=""SCat_id_title"">ID</span>" & _
+                "<span id=""SCat_name_title"" class=""SCat_name_title"">Name</span>" & _
+                "<span id=""PSCat_ID_title"" class=""PSCat_ID_title"">Prime</span>" & _
+                "<span id=""SCat_delete_title"" class=""SCat_delete_title"">Delete</span>"
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from PrimeCat"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("PrimeCatDeleted") = True Then
+	  Else
+		PCatOutput = PCatOutput & "<br />" & "<span id=""PCat_id"" class=""PCat_id"">" & RS.Fields("PrimeCatID") & "</span>" & _
+					"<span id=""PCat_name"" class=""PCat_name"">" & RS.Fields("PrimeCatName") & "</span>" & _
+					"<span id=""PCat_delete"" class=""PCat_delete"">" & _
+						"<input class=""button sm_button"" type=""button"" value=""X"" id=""del_PCat_B""  onClick=""verify_del_PrimeCat_F(" & RS.Fields("PrimeCatID") & ")"" >" & _
+					"</span>"
+	  End If
+	  RS.MoveNext
+	Loop
+
+    PcatOutput = PCatOutput & "</div>"
+    
+    RS.Close
+    
+    SQL = "Select * from SecondCat"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("SecondCatDeleted") = True Then
+	  Else
+		SCatOutput = SCatOutput & "<br />" & "<span id=""SCat_id"" class=""SCat_id"">" & RS.Fields("SecondCatID") & "</span>" & _
+					"<span id=""SCat_name"" class=""SCat_name"">" & RS.Fields("SecondCatName") & "</span>" & _
+					"<span id=""PSCat_id"" class=""PSCat_id"">" & get_PrimeCat_F(RS.Fields("PrimeCatID")) & "</span>" & _
+					"<span id=""SCat_delete"" class=""SCat_delete"">" & _
+						"<input class=""button sm_button"" type=""button"" value=""X"" id=""del_SCat_B""  onClick=""verify_del_SecondCat_F(" & RS.Fields("SecondCatID") & ")"" >" & _
+					"</span>"
+	  End If
+	  RS.MoveNext
+	Loop
+    SCatOutput = ScatOutput & "</div>"
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	list_Cat.InnerHTML = PCatOutput & SCatOutput
+End Sub
+
+Sub Add_PrimeCat_S
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from PrimeCat"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+	If RS.EOF Then
+		lastID = 0
+	Else
+		RS.MoveLast
+		lastID = RS.Fields("PrimeCatID")
+	End If
+	CatName = document.getElementByID("add_PCat_text").value
+	 
+	temp = CInt(lastID) + 1
+	
+	If CatName = "" Then
+		Cat_alert.InnerHTML = "<span id=""Cat_alert_color"" class=""red"">Please enter a PrimeCat name.</span>"
+	Else
+		RS.AddNew
+		RS("PrimeCatID") = temp
+        RS("PrimeCatName") = CatName
+		RS.Update
+		RS.Close
+        CN.Close
+        Set CN = Nothing
+        Set RS = Nothing
+		
+		clear_all_S
+		Cat_S
+	End If
+End Sub
+
+Sub Add_SecondCat_S
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from SecondCat"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+	If RS.EOF Then
+		lastID = 0
+	Else
+		RS.MoveLast
+		lastID = RS.Fields("SecondCatID")
+	End If
+	CatName = document.getElementByID("add_SCat_text").value
+    PCatValue = document.getElementByID("Prime_Second_Select").value
+	 
+	temp = CInt(lastID) + 1
+	
+	If CatName = "" Then
+		Cat_alert.InnerHTML = "<span id=""Cat_alert_color"" class=""red"">Please enter a SecondCat name.</span>"
+	Else
+		RS.AddNew
+		RS("SecondCatID") = temp
+        RS("SecondCatName") = CatName
+        RS("PrimeCatID") = PCatValue
+		RS.Update
+		RS.Close
+        CN.Close
+        Set CN = Nothing
+        Set RS = Nothing
+		
+		clear_all_S
+		Cat_S
+	End If
+End Sub
+
+Sub Add_TechView_S
+    add_techview_B.style.display="none"
+    
+    Dim tempaddtech
+    tempaddtech = "<div id=""add_tech"" class=""add_tech"">" & _
+                    "New Technician:" & _
+                    "<br />First: <input type=""text"" class=""text_med"" id=""add_techF_text"" maxlength=""12"">" & _
+                    "<br />Last: <input type=""text"" class=""text_med"" id=""add_techL_text"" maxlength=""12"">" & _
+                    "<br />PIN: <input type=""text"" class=""text_med"" id=""add_techPin_text"" maxlength=""4"">" & _
+                    "<br />Permissions: " & _
+                        "<select class=""status_select"" id=""add_techPerm_select"">" & _
+                            "<option value=""0"">Edit</option>" & _
+                            "<option value=""1"">Admin</option>" & _
+                        "</select>" & _
+                    "<br />" & _
+                    "<input class=""button"" type=""button"" value=""Add"" id=""add_tech_B""  onClick=""add_tech_S"">" & _
+					"&nbsp;&nbsp;<input class=""button"" type=""button"" value=""Cancel"" id=""Cancel_Tech_B""  onClick=""Tech_S"">" & _
+                    "&nbsp;&nbsp;<span id=""tech_alert"" class=""tech_alert""></span>" & _
+                "</div>"
+    
+    bottom_window.InnerHTML = tempaddtech
+End Sub
+
+Sub Tech_S
+	clear_all_S
+    title_heading.InnerHTML = "Technicians"
+	
+    Dim temptech
+    temptech = "<div id=""view_techs"" class=""view_techs"">" & _
+                    "<span id=""list_techs"" class=""list_techs""></span><br /><br />" & _
+                    "<input class=""button"" type=""button"" value=""Add New"" id=""add_techview_B""  onClick=""add_techview_S"">" & _
+                "</div>"
+    
+    top_window.InnerHTML = temptech
+    
+    list_techs_S
+End Sub
+
+Sub list_techs_S
+	TechOutput = "<span id=""tech_id_title"" class=""tech_id_title"">Tech ID</span>" & _
+                "<span id=""tech_nameU_title"" class=""tech_nameU_title"">Username</span>" & _
+                "<span id=""tech_nameF_title"" class=""tech_nameF_title"">First</span>" & _
+                "<span id=""tech_nameL_title"" class=""tech_nameL_title"">Last</span>" & _
+                "<span id=""tech_perm_title"" class=""tech_perm_title"">Perm</span>" & _
+                "<span id=""tech_delete_title"" class=""tech_delete_title"">Delete</span>"
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Tech"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("TechDeleted") = True Then
+	  Else
+		TechOutput = TechOutput & "<br />" & "<span id=""tech_id"" class=""tech_id"">" & RS.Fields("TechID") & "</span>" & _
+					"<span id=""tech_nameU"" class=""tech_nameU"">" & RS.Fields("TechUName") & "</span>" & _
+					"<span id=""tech_nameF"" class=""tech_nameF"">" & RS.Fields("TechFName") & "</span>" & _
+					"<span id=""tech_nameL"" class=""tech_nameL"">" & RS.Fields("TechLName") & "</span>" & _
+					"<span id=""tech_perm"" class=""tech_perm"">" & RS.Fields("TechPerm") & "</span>" & _
+					"<span id=""del_tech_span"" class=""del_tech_span"">" & _
+						"<input class=""button sm_button"" type=""button"" value=""X"" id=""del_tech_B""  onClick=""verify_del_tech_F(" & RS.Fields("TechID") & ")"" >" & _
+					"</span>"
+	  End If
+	  RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	list_techs.InnerHTML = TechOutput
+End Sub
+
+Sub Add_Tech_S
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Tech"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+	If RS.EOF Then
+		lastID = 0
+	Else
+		RS.MoveLast
+		lastID = RS.Fields("TechID")
+	End If
+	techFName = document.getElementByID("add_techF_text").value
+    techLName = document.getElementByID("add_techL_text").value
+    techPin = document.getElementByID("add_techPin_text").value
+    techPerm = document.getElementByID("add_techPerm_select").value
+    techUName = Left(techFName, 1) & Left(TechLName, 10)
+	 
+	temp = CInt(lastID) + 1
+	
+	If techFName = "" OR techLName = "" Then
+		tech_alert.InnerHTML = "<span id=""tech_alert_color"" class=""red"">Please enter a technician name.</span>"
+	Else
+		RS.AddNew
+		RS("TechID") = temp
+        RS("TechUName") = techUName
+		RS("TechFName") = techFName
+        RS("TechLName") = techLName
+        RS("TechPin") = techPin
+        RS("TechPerm") = techPerm
+		RS.Update
+		RS.Close
+        CN.Close
+        Set CN = Nothing
+        Set RS = Nothing
+		
+		clear_all_S
+		Tech_S
+	End If
+End Sub
+
+Sub new_Event_S
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+	CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+	If NOT RS.EOF Then RS.MoveLast
+    
+    If RS.EOF Then
+		lastID = 0
+	Else
+		RS.MoveLast
+		lastID = RS.Fields("EventID")
+	End If
+    temp = CInt(lastID) + 1
+	
+	newEventID = temp
+	newEventDate = Now
+    newStatusID = document.getElementByID("new_status_select").value
+    newPriorityID = document.getElementByID("new_priority_select").value
+	newEventPrimeCat = document.getElementByID("primecat_select").value
+	newEventSecondCat = document.getElementByID("secondcat_select").value
+	newEventTech = document.getElementByID("tech_select").value
+	newEventTech2 = document.getElementByID("new_tech_select").value
+	newEventDesc = document.getElementByID("new_Event_desc_text").value
+	newEventData = document.getElementByID("new_data_text").value
+	
+	StartDateT = Day(DateAdd("d",-10,Now)) & "/" & MonthName(Month(DateAdd("d",-10,Now))) & "/" & Year(DateAdd("d",-10,Now))
+	EndDateT = Day(Now) & "/" & MonthName(Month(Now)) & "/" & Year(Now)
+	
+	newEventData = newEventData & "<br /><br />CREATED &nbsp;" & _
+					"Status: " & get_Stat_F(CInt(newStatusID)) & "&nbsp;-&nbsp;" & _
+					"Priority: " & get_Priority_F(CInt(newPriorityID)) & "&nbsp;-&nbsp;" & _
+					"Tech: " & get_Tech_F(CInt(newEventTech)) & "&nbsp;-&nbsp;" & _
+					"Prime Cat: " & get_PrimeCat_F(CInt(newEventPrimeCat)) & "&nbsp;-&nbsp;" & _
+					"Sub Cat: " & get_SecondCat_F(CInt(newEventSecondCat)) & "&nbsp;-&nbsp;" & _
+					"Desc: " & newEventDesc
+	
+	If newEventDesc = "" Then
+		new_alert.InnerHTML = "<span id=""new_alert_color"" class=""red"">Please enter a description.</span>"
+	ElseIf newStatusID = "0" Then
+		new_alert.InnerHTML = "<span id=""new_alert_color"" class=""red"">Please select a status.</span>"
+	ElseIf newEventTech2 = 0 Then
+		new_alert.InnerHTML = "<span id=""new_alert_color"" class=""red"">Please select a technician.</span>"
+	Else
+		RS.AddNew
+		RS("EventID") =  newEventID
+        RS("EventDate") =  newEventDate
+		RS("StatusID") = newStatusID
+		RS("PriorityID") = newPriorityID
+        RS("PrimeCatID") =  newEventPrimeCat
+        RS("SecondCatID") =  newEventSecondCat
+		RS("TechID") = newEventTech
+		RS("EventDesc") = newEventDesc
+		RS.Update
+		RS.Close
+		
+		SQL = "Select * from Updates"
+        RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		If NOT RS.EOF Then RS.MoveLast
+		
+        If RS.EOF Then
+            lastID = 0
+        Else
+            RS.MoveLast
+            lastID = RS.Fields("UpdateID")
+        End If
+        temp = CInt(lastID) + 1
+    
+		RS.AddNew
+		RS("UpdateID") =  temp
+        RS("UpdateDate") =  newEventDate
+        RS("EventID") =  newEventID
+        RS("TechID") = newEventTech2
+		RS("UpdateData") = newEventData
+		RS.Update
+		
+        RS.Close
+		CN.Close
+        Set CN = Nothing
+        Set RS = Nothing
+		
+		call list_Events_F(newEventID,"*","Event",StartDateT,EndDateT,menu_selected,0,0,0,0,"","EventDate","","")
+	End If
+End Sub
+
+Sub GenerateReport_S
+    Dim eventDisplay
+	
+	Day_Start = document.getElementByID("Day_Start_select").value
+	Month_Start = document.getElementByID("Month_Start_select").value
+	Year_Start = document.getElementByID("Year_Start_select").value
+	Day_End = document.getElementByID("Day_End_select").value
+	Month_End = document.getElementByID("Month_End_select").value
+	Year_End = document.getElementByID("Year_End_select").value
+	Detailed = document.getElementByID("detailedReportCheck").checked
+	IncludeZero = document.getElementByID("includeZeroCheck").checked
+	' Status = document.getElementByID("Status_select").value
+	' Priority = document.getElementByID("Priority_select").value
+	' Tech = document.getElementByID("Tech_select").value
+	' PCat = document.getElementByID("primecat_select").value
+	' SCat = document.getElementByID("secondcat_select").value
+	
+	StartDate = Day_Start & "/" & MonthName(Month_Start,True) & "/" & Year_Start
+	EndDate = Day_End & "/" & MonthName(Month_End,True) & "/" & Year_End
+
+	If IsDate(StartDate) AND IsDate(EndDate) Then
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		
+		StartDateF = FormatDateTime(StartDate & " 00:00:01")
+		EndDateF =  FormatDateTime(EndDate & " 23:59:59")
+		
+		Dim Query, Extra,First
+		
+		DateQuery = "EventDate BETWEEN #" & StartDateF & "# AND #" & EndDateF & "#"
+		
+		MainQuery = " WHERE " & DateQuery & " OR StatusID=1" 
+		Query = MainQuery & " ORDER BY StatusID ASC,EventDate ASC"
+		
+		' If Status <> 0 Then
+			' Query = Query & " AND StatusID = " & Status
+		' End If
+		' If Priority <> 0 Then
+			' Query = Query & " AND PriorityID = " & Priority
+		' End If
+		' If Tech <> 0 Then
+			' Query = Query & " AND TechID = " & Tech
+		' End If
+		' If PCat <> 0 Then
+			' Query = Query & " AND PrimeCatID = " & PCat
+		' End If
+		' If SCat <> 0 Then
+			' Query = Query & " AND SecondCatID = " & SCat
+		' End If
+		
+		'If Query <> "" Then Extra = " WHERE "
+		
+		clear_all_S
+		
+		If Detailed Then
+			Dim TotalsTemp
+		
+			TitleTemp = "<span id=""Event_id_title"" class=""Event_id_title"">ID</span>" & _
+					"<span id=""Event_date_title"" class=""Event_date_title"">Date</span>" & _
+					"<span id=""Event_status_title"" class=""Event_status_title"">Status</span>" & _
+					"<span id=""Event_Priority_title"" class=""Event_Priority_title"">Priority</span>" & _
+					"<span id=""Event_PCat_title"" class=""Event_PCat_title"">Prime Category</span>" & _
+					"<span id=""Event_SCat_title"" class=""Event_SCat_title"">Sub Category</span>" & _
+					"<span id=""Event_tech_title"" class=""Event_tech_title"">Tech</span>" & _
+					"<span id=""Event_desc_title"" class=""Event_desc_title"">Description</span><br />"
+					
+			EventTemp = "<span id=""Report_list"" class=""Report_list"">"
+
+			CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+				'; Jet OLEDB:Database Password=MyDbPassword;"
+
+			SQL = "SELECT * FROM Event" & Query
+
+			RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+			Dim count : count = 0
+			Dim CountTemp
+			
+			If NOT RS.EOF Then RS.MoveFirst
+			Do Until RS.EOF
+				count = count + 1
+				
+				If IsEven(count) Then
+					TempColor = "Even"
+				Else
+					TempColor = "Odd"
+				End If
+				
+				EventTemp = EventTemp & "<div id=""Report_list_" & count & """ class=""" & TempColor & """>" & TitleTemp & _
+							"<span id=""Event_id_" & count & """ class=""Event_id_" & count & """>" & RS.Fields("EventID") & "</span>" & _
+							"<span id=""Event_date"" class=""Event_date"">" & ConvertDate_F(RS.Fields("EventDate"),0) & "</span>" & _
+							"<span id=""Event_status"" class=""Event_status"">" & get_stat_F(RS.Fields("StatusID")) & "</span>" & _
+							"<span id=""Event_Priority"" class=""Event_Priority"">" & get_Priority_F(RS.Fields("PriorityID")) & "</span>" & _
+							"<span id=""Event_PCat"" class=""Event_PCat"">" & get_PrimeCat_F(RS.Fields("PrimeCatID")) & "</span>" & _
+							"<span id=""Event_SCat"" class=""Event_SCat"">" & get_SecondCat_F(RS.Fields("SecondCatID")) & "</span>" & _
+							"<span id=""Event_tech"" class=""Event_tech"">" & get_tech_F(RS.Fields("TechID")) & "</span>" & _
+							"<span id=""Event_desc"" class=""Event_desc"">" & RS.Fields("EventDesc") & "</span>" & _
+							"<br /><br /><hr size=1>" & get_Data_F(RS.Fields("EventID")) & "</div><br />"
+				RS.MoveNext
+			Loop
+						
+			RS.Close
+			CN.Close
+			
+			eventDisplay = "<br /><br /><b>DETAILS:</b> <br /><br />" & EventTemp & "</span>"
+		Else
+			eventDisplay = ""
+		End If
+		
+		'COUNT TOTAL		
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+
+		'OVERAL COUNT
+		finalCountA = 0
+		
+		SQL = "SELECT COUNT(*) AS Total FROM Event Where (" & DateQuery & " OR StatusID=1)"
+		RS.Open SQL, CN, adOpenStatic,adLockOptimistic
+		
+		If NOT RS.EOF Then
+			CountTemp = RS.Fields("Total")
+			finalCountA = CountTemp
+		End If
+		RS.Close
+		
+		Dim totalCountTemp : totalCountTemp = "<u>Total Events:</u><br />" & finalCountA & "<br /><br />"
+		
+		'COUNT STATUSES
+		finalCountB = 0
+		Dim statCountTemp : statCountTemp = "<u>Statuses:</u> <br />"
+		
+		SQL = "SELECT COUNT(*) AS Total FROM Status"
+		RS.Open SQL, CN, adOpenStatic,adLockOptimistic
+		
+		If NOT RS.EOF Then
+			CountTemp = RS.Fields("Total")
+		End If
+		RS.Close
+		
+		For i = 1 To CountTemp
+			SQL = "SELECT COUNT(*) AS Total FROM Event Where (" & DateQuery & " OR StatusID=1) AND StatusID=" & i
+			RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+			Count = RS.Fields("Total")
+			finalCountB = finalCountB + Count
+			If Count <> 0 OR IncludeZero Then
+				statCountTemp = statCountTemp & get_Stat_F(i) & " = " & Count & "<br />" 
+			End If
+			RS.Close
+		Next
+		
+		If finalCountA-finalCountB <> 0 OR IncludeZero Then
+			statCountTemp = statCountTemp & "None = " & finalCountA-finalCountB & "<br />"
+		End If
+		
+		'COUNT PRIORITIES
+		finalCountB = 0
+		Dim priCountTemp : priCountTemp = "<br /><u>Priorities:</u> <br />"
+		
+		SQL = "SELECT COUNT(*) AS Total FROM Priority"
+		RS.Open SQL, CN, adOpenStatic,adLockOptimistic
+		
+		If NOT RS.EOF Then
+			CountTemp = RS.Fields("Total")
+		End If
+		RS.Close
+		
+		For i = 1 To CountTemp
+			SQL = "SELECT COUNT(*) AS Total FROM Event Where (" & DateQuery & " OR StatusID=1) AND PriorityID=" & i
+			RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+			Count = RS.Fields("Total")
+			finalCountB = finalCountB + Count
+			If Count <> 0 OR IncludeZero Then
+				priCountTemp = priCountTemp & get_Priority_F(i) & " = " & Count & "<br />" 
+			End If
+			RS.Close
+		Next
+		
+		If finalCountA-finalCountB <> 0 OR IncludeZero Then
+			priCountTemp = priCountTemp & "None = " & finalCountA-finalCountB & "<br />"
+		End If
+		
+		'COUNT PRIMARY CATEGORIES
+		finalCountB = 0
+		Dim pCatCountTemp : pCatCountTemp = "<br /><u>Primary Categories</u>: <br />"
+		
+		SQL = "SELECT COUNT(*) AS Total FROM PrimeCat"
+		RS.Open SQL, CN, adOpenStatic,adLockOptimistic
+		
+		If NOT RS.EOF Then
+			CountTemp = RS.Fields("Total")
+		End If
+		RS.Close
+		
+		For i = 1 To CountTemp
+			SQL = "SELECT COUNT(*) AS Total FROM Event Where (" & DateQuery & " OR StatusID=1) AND PrimeCatID=" & i
+			RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+			Count = RS.Fields("Total")
+			finalCountB = finalCountB + Count
+			If Count <> 0 OR IncludeZero Then
+				pCatCountTemp = pCatCountTemp & get_PrimeCat_F(i) & " = " & Count & "<br />"
+			End If				
+			RS.Close
+		Next
+		
+		If finalCountA-finalCountB <> 0 OR IncludeZero Then
+			pCatCountTemp = pCatCountTemp & "None = " & finalCountA-finalCountB & "<br />"
+		End If
+		
+		'COUNT SECONDARY CATEGORIES
+		finalCountB = 0
+		Dim sCatCountTemp : sCatCountTemp = "<br /><u>Sub Categories:</u> <br />"
+		
+		SQL = "SELECT COUNT(*) AS Total FROM SecondCat"
+		RS.Open SQL, CN, adOpenStatic,adLockOptimistic
+		
+		If NOT RS.EOF Then
+			CountTemp = RS.Fields("Total")
+		End If
+		RS.Close
+		
+		For i = 1 To CountTemp
+			SQL = "SELECT COUNT(*) AS Total FROM Event Where (" & DateQuery & " OR StatusID=1) AND SecondCatID=" & i
+			RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+			Count = RS.Fields("Total")
+			finalCountB = finalCountB + Count
+			If Count <> 0 OR IncludeZero Then
+				sCatCountTemp = sCatCountTemp & get_SecondCat_F(i) & " = " & Count & "<br />"
+			End If
+			RS.Close
+		Next
+		
+		If finalCountA-finalCountB <> 0 OR IncludeZero Then
+			sCatCountTemp = sCatCountTemp & "None = " & finalCountA-finalCountB & "<br />"
+		End If
+		
+		'COUNT TECHNICIANS
+		finalCountB = 0
+		Dim techCountTemp : techCountTemp = "<br /><u>Assigned Technicians:</u> <br />"
+		
+		SQL = "SELECT COUNT(*) AS Total FROM Tech"
+		RS.Open SQL, CN, adOpenStatic,adLockOptimistic
+		
+		If NOT RS.EOF Then
+			CountTemp = RS.Fields("Total")
+		End If
+		RS.Close
+		
+		For i = 1 To CountTemp
+			SQL = "SELECT COUNT(*) AS Total FROM Event Where (" & DateQuery & " OR StatusID=1) AND TechID=" & i
+			RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+			Count = RS.Fields("Total")
+			finalCountB = finalCountB + Count
+			If Count <> 0 OR IncludeZero Then
+				techCountTemp = techCountTemp & get_tech_F(i) & " = " & Count & "<br />"
+			End If
+			RS.Close
+		Next
+		
+		If finalCountA-finalCountB <> 0 OR IncludeZero Then
+			techCountTemp = techCountTemp & "None = " & finalCountA-finalCountB & "<br />"
+		End If
+		
+		'CLOSE DATABASE
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+		
+		countDisplay = "<b>SUMMARY:</b> <br /><br />" & totalCountTemp & statCountTemp & priCountTemp & pCatCountTemp & sCatCountTemp & techCountTemp
+		
+		PrintButton = "<input type=""button"" class=""button"" value=""Print"" Onclick=""print()"" /><br /><hr /><br />"
+		
+		title = "Report from: " & StartDate & " " & _
+				"to: " & EndDate
+		title_heading.InnerHTML = title
+		top_window.InnerHTML = PrintButton & countDisplay & eventDisplay
+	Else
+		report_alert.InnerHTML = "Invalid Start or End Date."
+	End If
+End Sub
+
+Sub release_notes_S
+    set objShell = CreateObject("Wscript.Shell")
+    objShell.Run "notepad.exe Release_Notes.txt"
+End Sub
+
+' -FUNCTIONS-
+Function resize_Height(element,size)
+	document.getElementByID(element).style.Height = size & "px"
+End Function
+
+Function IsEven(varParam)
+    IsEven = ((varParam Mod 2) = 0)
+End Function
+
+Function select_Stat_F(temp,selected)
+	StatSelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select"">"
+	
+	If selected = -1 Then
+		StatSelect = StatSelect & "<option value=""0"">All</option>"
+	ElseIf selected = (0) Then
+		StatSelect = StatSelect & "<option value=""0"">None</option>"
+	Else
+		StatSelect = StatSelect & "<option value=""0"">Status</option>"
+	End If
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Status"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("StatusDeleted") = True Then
+	  Else
+		If RS.Fields("StatusID") = selected Then
+			StatSelect = StatSelect & "<option value=""" & RS.Fields("StatusID") & """ selected=selected>" & RS.Fields("StatusName") & "</option>"
+		Else
+			StatSelect = StatSelect & "<option value=""" & RS.Fields("StatusID") & """>" & RS.Fields("StatusName") & "</option>"
+		End If
+	  End If
+	  RS.MoveNext
+	Loop
+
+	RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	StatSelect = StatSelect & "</select>"
+	
+	select_Stat_F = StatSelect
+End Function
+
+Function del_Stat_F(num)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Status"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("StatusID") = num Then
+				RS("StatusDeleted") = True
+				RS.Update
+			Exit Do
+		Else
+			RS.MoveNext
+		End If
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function verify_del_Stat_F(temp)
+	temp_text = "Are you sure you want to delete ID: " & temp & " " & get_Stat_F(temp) & "?"
+	
+	bottom_window.InnerHTML = temp_text & "<br /><input class=""button"" type=""button"" value=""Yes"" id=""verify_button_Stat_yes_B""  onClick=""verify_button_Stat_F(" & temp & ")"">" & _
+                            "<input class=""button"" type=""button"" value=""No"" id=""verify_button_Stat_no_B""  onClick=""verify_button_Stat_F(0)"">"
+End Function
+
+Function verify_button_Stat_F(choice)
+	If choice = 0 Then
+		bottom_window.InnerHTML=""
+		Stat_S
+	Else
+		del_Stat_F(choice)
+		bottom_window.InnerHTML=""
+		Stat_S
+	End If
+End Function
+
+Function select_Priority_F(temp,selected)
+	PrioritySelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select"">"
+	
+	If selected = -1 Then
+		PrioritySelect = PrioritySelect & "<option value=""0"">All</option>"
+	ElseIf selected = (0) Then
+		PrioritySelect = PrioritySelect & "<option value=""0"">None</option>"
+	Else
+		PrioritySelect = PrioritySelect & "<option value=""0"">Status</option>"
+	End If
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Priority"
+    
+    RS.Open SQL,CN,adOpenPriorityic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("PriorityDeleted") = True Then
+	  Else
+		If RS.Fields("PriorityID") = selected Then
+			PrioritySelect = PrioritySelect & "<option value=""" & RS.Fields("PriorityID") & """ selected=selected>" & RS.Fields("PriorityName") & "</option>"
+		Else
+			PrioritySelect = PrioritySelect & "<option value=""" & RS.Fields("PriorityID") & """>" & RS.Fields("PriorityName") & "</option>"
+		End If
+	  End If
+	  RS.MoveNext
+	Loop
+
+	RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	PrioritySelect = PrioritySelect & "</select>"
+	
+	select_Priority_F = PrioritySelect
+End Function
+
+Function del_Priority_F(num)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Priority"
+    
+    RS.Open SQL,CN,adOpenPriorityic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("PriorityID") = num Then
+				RS("PriorityDeleted") = True
+				RS.Update
+			Exit Do
+		Else
+			RS.MoveNext
+		End If
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function verify_del_Priority_F(temp)
+	temp_text = "Are you sure you want to delete ID: " & temp & " " & get_Priority_F(temp) & "?"
+	
+	bottom_window.InnerHTML = temp_text & "<br /><input class=""button"" type=""button"" value=""Yes"" id=""verify_button_Priority_yes_B""  onClick=""verify_button_Priority_F(" & temp & ")"">" & _
+                            "<input class=""button"" type=""button"" value=""No"" id=""verify_button_Priority_no_B""  onClick=""verify_button_Priority_F(0)"">"
+End Function
+
+Function verify_button_Priority_F(choice)
+	If choice = 0 Then
+		bottom_window.InnerHTML=""
+		Priority_S
+	Else
+		del_Priority_F(choice)
+		bottom_window.InnerHTML=""
+		Priority_S
+	End If
+End Function
+
+Function PCat_Select_Change_F(obj)
+    SecondCat_Span.InnerHTML = select_SecondCat_F("secondcat",obj.value,0)
+End Function
+
+Function select_PrimeCat_F(temp,opt,selected)
+	If opt = 1 Then
+		change = "onChange=""PCat_Select_Change_F(Me)"""
+		CatSelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select""" & change & "><option value=""0"">All</option>"
+	Else
+		CatSelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select""" & change & "><option value=""0"">None</option>"
+	End If
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from PrimeCat ORDER BY PrimeCatName ASC"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("PrimeCatDeleted") = True Then
+	  Else
+		If selected = RS.Fields("PrimeCatID") Then
+			CatSelect = CatSelect & "<option value=""" & RS.Fields("PrimeCatID") & """ selected=selected>" & RS.Fields("PrimeCatName") & "</option>"
+		Else
+			CatSelect = CatSelect & "<option value=""" & RS.Fields("PrimeCatID") & """>" & RS.Fields("PrimeCatName") & "</option>"
+		End If
+	  End If
+	  RS.MoveNext
+	Loop
+
+	RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	CatSelect = CatSelect & "</select>"
+	
+	select_PrimeCat_F = CatSelect
+End Function
+
+Function del_PrimeCat_F(num)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from PrimeCat"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("PrimeCatID") = num Then
+				RS("PrimeCatDeleted") = True
+				RS.Update
+			Exit Do
+		Else
+			RS.MoveNext
+		End If
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function verify_del_PrimeCat_F(temp)
+	temp_text = "Are you sure you want to delete ID: " & temp & " " & get_PrimeCat_F(temp) & "?"
+	
+	bottom_window.InnerHTML = temp_text & "<br /><input class=""button"" type=""button"" value=""Yes"" id=""verify_button_Cat_yes_B""  onClick=""verify_button_PrimeCat_F(" & temp & ")"">" & _
+                            "<input class=""button"" type=""button"" value=""No"" id=""verify_button_Cat_no_B""  onClick=""verify_button_PrimeCat_F(0)"">"
+End Function
+
+Function select_SecondCat_F(temp,temp2,selected)
+	CatSelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select""><option value=""0"">None</option>"
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from SecondCat ORDER BY SecondCatName ASC"
+    
+	primetemp = CInt(temp2)
+	
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("SecondCatDeleted") = True Then
+	  Else
+		If primetemp = 0 Then
+			If selected = RS.Fields("SecondCatID") Then
+				CatSelect = CatSelect & "<option value=""" & RS.Fields("SecondCatID") & """ selected=selected>" & RS.Fields("SecondCatName") & "</option>"
+			Else
+				CatSelect = CatSelect & "<option value=""" & RS.Fields("SecondCatID") & """>" & RS.Fields("SecondCatName") & "</option>"
+			End If
+		Else
+			If primetemp = RS.Fields("PrimeCatID") Then
+				If selected = RS.Fields("SecondCatID") Then
+					CatSelect = CatSelect & "<option value=""" & RS.Fields("SecondCatID") & """ selected=selected>" & RS.Fields("SecondCatName") & "</option>"
+				Else
+					CatSelect = CatSelect & "<option value=""" & RS.Fields("SecondCatID") & """>" & RS.Fields("SecondCatName") & "</option>"
+				End If
+			End If
+		End If
+	  End If
+	  RS.MoveNext
+	Loop
+
+	RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	CatSelect = CatSelect & "</select>"
+	
+	select_SecondCat_F = CatSelect
+End Function
+
+Function del_SecondCat_F(num)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from SecondCat"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("SecondCatID") = num Then
+				RS("SecondCatDeleted") = True
+				RS.Update
+			Exit Do
+		Else
+			RS.MoveNext
+		End If
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function verify_del_SecondCat_F(temp)
+	temp_text = "Are you sure you want to delete ID: " & temp & " " & get_SecondCat_F(temp) & "?"
+	
+	bottom_window.InnerHTML = temp_text & "<br /><input class=""button"" type=""button"" value=""Yes"" id=""verify_button_Cat_yes_B""  onClick=""verify_button_SecondCat_F(" & temp & ")"">" & _
+                            "<input class=""button"" type=""button"" value=""No"" id=""verify_button_Cat_no_B""  onClick=""verify_button_SecondCat_F(0)"">"
+End Function
+
+Function verify_button_PrimeCat_F(choice)
+	If choice = 0 Then
+		bottom_window.InnerHTML=""
+		Cat_S
+	Else
+		del_PrimeCat_F(choice)
+		bottom_window.InnerHTML=""
+		Cat_S
+	End If
+End Function
+
+Function verify_button_SecondCat_F(choice)
+	If choice = 0 Then
+		bottom_window.InnerHTML=""
+		Cat_S
+	Else
+		del_SecondCat_F(choice)
+		bottom_window.InnerHTML=""
+		Cat_S
+	End If
+End Function
+
+Function select_tech_F(temp,temp2,selected)
+	techSelect = "<select class=""" & temp & "_select"" id=""" & temp & "_select"">"
+	
+	If selected = -1 Then
+		techSelect = techSelect & "<option value=""0"">All</option>"
+	ElseIf selected = 0 Then
+		techSelect = techSelect & "<option value=""0"">None</option>"
+	Else
+		techSelect = techSelect & "<option value=""0"">Tech</option>"
+	End If
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Tech ORDER BY TechUName ASC"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+	  If RS.Fields("TechDeleted") = True Then
+	  Else
+		If RS.Fields("TechID") = temp2 Then
+			techSelect = techSelect & "<option value=""" & RS.Fields("TechID") & """ selected=selected>" & RS.Fields("TechUName") & "</option>"
+		Else
+			techSelect = techSelect & "<option value=""" & RS.Fields("TechID") & """>" & RS.Fields("TechUName") & "</option>"
+		End If
+	  End If
+	  RS.MoveNext
+	Loop
+
+	RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	techSelect = techSelect & "</select>"
+	
+	select_tech_F = techSelect
+End Function
+
+Function del_tech_F(num)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Tech"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("TechID") = num Then
+				RS("TechDeleted") = True
+				RS.Update
+			Exit Do
+		Else
+			RS.MoveNext
+		End If
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function verify_del_tech_F(temp)
+	tech_num = temp
+	temp_text = "Are you sure you want to delete ID: " & temp & " " & get_tech_F(tech_num) & "?"
+	
+	bottom_window.InnerHTML = temp_text & "<br /><input class=""button"" type=""button"" value=""Yes"" id=""verify_button_Tech_yes_B""  onClick=""verify_button_Tech_F(" & temp & ")"">" & _
+                            "<input class=""button"" type=""button"" value=""No"" id=""verify_button_Tech_no_B""  onClick=""verify_button_Tech_F(0)"">"
+End Function
+
+Function verify_button_Tech_F(choice)
+	If choice = 0 Then
+		bottom_window.InnerHTML=""
+		Tech_S
+	Else
+		del_tech_F(choice)
+		bottom_window.InnerHTML=""
+		Tech_S
+	End If
+End Function
+
+Function list_Events_F(event_sel,column_sel,table_sel,startDate,endDate,status,priority,tech,p_cat,s_cat,find_text,sort1,sort2,sort_dir)
+	clear_all_S
+	
+    EventTemp = "<span id=""Event_id_title"" class=""Event_id_title"">ID</span>" & _
+				"<span id=""Event_date_title"" class=""Event_date_title"">Date Modified</span>" & _
+				"<span id=""Event_status_title"" class=""Event_status_title"">Status</span>" & _
+				"<span id=""Event_Priority_title"" class=""Event_Priority_title"">Priority</span>" & _
+				"<span id=""Event_PCat_title"" class=""Event_PCat_title"">Prime Category</span>" & _
+				"<span id=""Event_SCat_title"" class=""Event_SCat_title"">Sub Category</span>" & _
+				"<span id=""Event_tech_title"" class=""Event_tech_title"">Tech</span>" & _
+				"<span id=""Event_desc_title"" class=""Event_desc_title"">Description</span><br />" & _
+				"<span id=""Event_list"" class=""Event_list"">"
+	
+	DIM query, first, sort_t, join_sel, StartDateF, EndDateF
+	
+	first = 1
+	
+	If Not IsDate(startDate) AND Not IsDate(endDate) AND status = 0 AND priority = 0 AND tech = 0 AND _
+			p_cat = 0 AND s_cat = 0 AND find_text = "" Then
+	
+	Else
+		query = " WHERE "
+		
+		If IsDate(startDate) And IsDate(endDate) Then
+			StartDateF = FormatDateTime(StartDate & " 00:00:01")
+			EndDateF =  FormatDateTime(EndDate & " 23:59:59")
+			
+			query = query & " " & table_sel & ".EventDate BETWEEN #" & StartDateF & "# AND #" & EndDateF & "#"
+			
+			first = 0
+		End If
+		If status <> 0 Then
+			If first = 1 Then
+				first = 0
+			Else
+				query = query & " AND"
+			End If
+			query = query & " " & table_sel & ".StatusID = " & status
+		End If
+		If priority <> 0 Then
+			If first = 1 Then
+				first = 0
+			Else
+				query = query & " AND"
+			End If
+			query = query & " " & table_sel & ".PriorityID = " & priority
+		End If
+		If tech <> 0 Then
+			If first = 1 Then
+				first = 0
+			Else
+				query = query & " AND"
+			End If
+			query = query & " " & table_sel & ".TechID = " & tech
+		End If
+		If p_cat <> 0 Then
+			If first = 1 Then
+				first = 0
+			Else
+				query = query & " AND"
+			End If
+			query = query & " " & table_sel & ".PrimeCatID = " & p_cat
+		End If
+		If s_cat <> 0 Then
+			If first = 1 Then
+				first = 0
+			Else
+				query = query & " AND"
+			End If
+			query = query & " " & table_sel & ".SecondCatID = " & s_cat
+		End If
+		If find_text <> "" Then
+			If first = 1 Then
+				first = 0
+			Else
+				query = query & " AND"
+			End If
+			query = query & " (" & table_sel & ".EventDesc LIKE '%" & find_text & "%' OR Updates.UpdateData LIKE '%" & find_text & "%')"
+			join_sel = " LEFT JOIN Updates ON " & table_sel & ".EventID=Updates.EventID"
+		End If
+	End If
+	
+	sort_t = " ORDER BY " & table_sel & "." & sort1 & " " & sort_dir
+	
+	If sort2 = "" Then
+	Else
+		sort_t = sort_t & "," & table_sel & "." & sort2 & " " & sort_dir
+	End If
+	
+	SQL = "Select DISTINCT " & column_sel & " FROM " & table_sel & join_sel & query & sort_t
+	
+	Dim CN, RS, SQL
+	Set CN = CreateObject("ADODB.Connection")
+	Set RS = CreateObject("ADODB.Recordset")
+	CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+		'; Jet OLEDB:Database Password=MyDbPassword;"
+	
+	RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	menu_selected = status
+	selected_Event = ""
+	count = 0
+	statustemp = get_stat_F(status)
+		
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If status = 0 Then
+			title_heading.InnerHTML = "All Events"
+		Else
+			title_heading.InnerHTML = statustemp & " Events"
+		End If
+		
+		If event_sel = RS.Fields("EventID") Then
+			currentObj = "Event_List_" & count
+		End If
+		
+		EventTemp = EventTemp & "<div id=""Event_list_" & count & """ class=""Event_list_span_" & count & """ onclick=""call select_Event_F(" & RS.Fields("EventID") & ", Me)"" onmouseover=""call highlight_F(Me, 1)"" onmouseout=""call highlight_F(Me, 0)"">" & _
+					"<span id=""Event_id_" & count & """ class=""Event_id_" & count & """>" & RS.Fields("EventID") & "</span>" & _
+					"<span id=""Event_date"" class=""Event_date"">" & ConvertDate_F(RS.Fields("EventDate"),0) & "</span>" & _
+					"<span id=""Event_status"" class=""Event_status"">" & get_stat_F(RS.Fields("StatusID")) & "</span>" & _
+					"<span id=""Event_Priority"" class=""Event_Priority"">" & get_Priority_F(RS.Fields("PriorityID")) & "</span>" & _
+					"<span id=""Event_PCat"" class=""Event_PCat"">" & get_PrimeCat_F(RS.Fields("PrimeCatID")) & "</span>" & _
+					"<span id=""Event_SCat"" class=""Event_SCat"">" & get_SecondCat_F(RS.Fields("SecondCatID")) & "</span>" & _
+					"<span id=""Event_tech"" class=""Event_tech"">" & get_tech_F(RS.Fields("TechID")) & "</span>" & _
+					"<span id=""Event_desc"" class=""Event_desc"">" & RS.Fields("EventDesc") & "</span></div>"
+					
+		count = count + 1
+		RS.MoveNext
+	Loop
+	
+	If count = 0 Then
+		title_heading.InnerHTML = "No Events"
+		bottom_window.InnerHTML = "No Events Found."
+	End If
+	
+	RS.Close
+	CN.Close
+	Set CN = Nothing
+	Set RS = Nothing
+	
+	EventTemp = EventTemp & "</span>"
+	
+	top_window.InnerHTML = "Total Events: " & count & "<br />" & EventTemp
+	
+	'If event_sel <> 0 Then
+		'set current_Obj = document.getElementByID(currentObj)
+		'call select_Event_F(event_sel, current_Obj)
+	'End If
+	
+	call resize_Height("Event_list",500)
+End Function
+
+Function highlight_F(obj, dir)
+	tempobj = obj.id
+	If dir = 1 And tempobj <> selected_Event Then
+		document.getElementByID(tempobj).style.backgroundColor = "cyan"
+	ElseIf tempobj <> selected_Event Then
+		document.getElementByID(tempobj).style.backgroundColor = "#BBCFFF"
+	End If
+End Function
+
+Function select_Event_F(Event_id, obj)
+	tempobj = obj.id
+	
+	If selected_Event <> "" Then
+		document.getElementByID(selected_Event).style.backgroundColor = "#BBCFFF"
+		document.getElementByID(selected_Event).style.Color = "black"
+		document.getElementByID(tempobj).style.backgroundColor = "blue"
+		document.getElementByID(tempobj).style.Color = "white"
+		selected_Event = tempobj
+	Else
+		document.getElementByID(tempobj).style.backgroundColor = "blue"
+		document.getElementByID(tempobj).style.Color = "white"
+		selected_Event = tempobj
+	End If
+	
+	get_Event_data_F(Event_id)
+End Function
+
+Function get_Event_data_F(Event_id)
+    Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = Event_id Then
+			EventDataOutput = "<br />Updates:<br />" & _
+								"<span id=""Event_data_data"" class=""Event_data_data"">" & get_data_F(Event_id) & "</span><br /><br />" & _
+								"<input class=""button"" type=""button"" value=""Edit"" id=""Add_Data_B""  onClick=""Data_F(" & Event_id & ")"">" & _
+								"<span id=""Event_data_update"" class=""Event_data_update""></span>"
+		End If
+		RS.MoveNext
+	Loop
+	
+	RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	call resize_Height("Event_list",220)
+	document.getElementByID(selected_Event).scrollIntoView True
+	
+	bottom_window.InnerHTML = EventDataOutput
+End Function
+
+Function Data_F(Event_id)
+    dim SelectStat, SelectPriority, SelectTech, SelectPCat, SelectSCat, TempDesc
+	
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event WHERE EventID = " & Event_id
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = Event_id Then
+			SelectStat = RS.Fields("StatusID")
+			SelectPriority = RS.Fields("PriorityID")
+			SelectTech = RS.Fields("TechID")
+			SelectPCat = RS.Fields("PrimeCatID")
+			SelectSCat = RS.Fields("SecondCatID")
+			TempDesc = RS.Fields("EventDesc")
+			Exit Do
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+    EventDataOutput = "New Update:<br />Desc: &nbsp;<input type=""text"" class=""edit_Event_desc"" id=""edit_Event_desc_text"" maxlength=""80"" value=""" & TempDesc & """><br />" & _
+						"Status: &nbsp;" & select_stat_F("update_status",SelectStat) & _
+						"&nbsp;&nbsp;&nbsp; Priority: &nbsp;" & select_Priority_F("update_Priority",SelectPriority) & _
+						"&nbsp;&nbsp;&nbsp; Assigned Tech: &nbsp;" & select_tech_F("add_data_tech",SelectTech,-1) & _
+						"&nbsp;&nbsp;&nbsp; Prime Category: &nbsp;" & select_PrimeCat_F("primecat",1,SelectPCat) & _
+						"&nbsp;&nbsp;&nbsp; Sub Category: &nbsp;<span id=""SecondCat_Span"" class=""SecondCat_Span""></span>" & _
+                        "<br /><textarea class=""add_data_text"" id=""add_data_text"" maxlength=""2000""></textarea><br />" & _
+                        "<input class=""button"" type=""button"" value=""Save"" id=""Add_Data_B""  onClick=""Add_Data_F(" & Event_id & ")"">" & _
+                        "&nbsp;&nbsp;<input class=""button"" type=""button"" value=""Cancel"" id=""Cancel_Data_B""  onClick=""get_Event_data_F(" & Event_id & ")"">" & _
+						"&nbsp;&nbsp;" & select_tech_F("update_data_tech",0,1) & _
+                        "&nbsp;&nbsp;&nbsp;<span id=""update_alert"" class=""update_alert""></span><br />"
+    
+	Event_data_update.InnerHTML = EventDataOutput
+	SecondCat_Span.InnerHTML = select_SecondCat_F("secondcat",0,selectSCat)
+	
+	document.getElementByID("Add_Data_B").Style.Visibility = "Hidden"
+	
+	call resize_Height("Event_list",100)
+	document.getElementByID(selected_Event).scrollIntoView True
+End Function
+
+Function get_tech_F(num)
+	dim temp
+	
+	If num = 0 Then
+		temp = "Any"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Tech"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		If rs.EOF Then
+			temp = "None"
+		Else
+			RS.MoveFirst
+			Do Until RS.EOF
+				If RS.Fields("TechID") = num Then
+					temp = RS.Fields("TechUName")
+					If RS.Fields("TechDeleted") = True Then
+						temp = "<span id=""tech_color"" class=""red"">" & temp & "</span>"
+					End If
+					Exit Do
+				Else
+					RS.MoveNext
+				End If
+			Loop
+			
+			RS.Close
+			CN.Close
+			Set CN = Nothing
+			Set RS = Nothing
+		End If
+	End If
+	
+	get_tech_F = temp
+End Function
+
+Function get_Stat_F(num)
+	Dim temp
+
+	If num = 0 Then
+		temp = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Status"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		If RS.EOF Then 
+			temp = "None"
+		Else
+			RS.MoveFirst
+			Do Until RS.EOF
+				If RS.Fields("StatusID") = num Then
+					temp = RS.Fields("StatusName")
+					If RS.Fields("StatusDeleted") = True Then
+						temp = "<span id=""Stat_color"" class=""red"">" & temp & "</span>"
+					End If
+					Exit Do
+				Else
+					RS.MoveNext
+				End If
+			Loop
+			
+			RS.Close
+			CN.Close
+			Set CN = Nothing
+			Set RS = Nothing
+		End If
+	End If
+	
+	get_Stat_F = temp
+End Function
+
+Function get_techID_F(tech_Event_id)
+	dim temp_tech
+	
+	If tech_Event_id = 0 Then
+		temp_tech = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Event"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		dim blah
+		
+		If NOT RS.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("EventID") = tech_Event_id Then
+				temp_tech = RS.Fields("TechID")
+				Exit Do
+			End If
+			RS.MoveNext
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+
+	get_techID_F = temp_tech
+End Function
+
+Function get_statusID_F(status_Event_id)
+	dim temp_status
+	
+	If status_Event_id = 0 Then
+		temp_status = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Event"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		dim blah
+		
+		If NOT RS.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("EventID") = status_Event_id Then
+				temp_status = RS.Fields("StatusID")
+				Exit Do
+			End If
+			RS.MoveNext
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+
+	get_statusID_F = temp_status
+End Function
+
+Function get_priorityID_F(priority_Event_id)
+	dim temp_priority
+	
+	If priority_Event_id = 0 Then
+		temp_priority = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Event"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		dim blah
+		
+		If NOT RS.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("EventID") = priority_Event_id Then
+				temp_priority = RS.Fields("PriorityID")
+				Exit Do
+			End If
+			RS.MoveNext
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+
+	get_priorityID_F = temp_priority
+End Function
+
+Function get_primeCatID_F(primeCat_Event_id)
+	dim temp_primeCat
+	
+	If primeCat_Event_id = 0 Then
+		temp_primeCat = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Event"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		dim blah
+		
+		If NOT RS.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("EventID") = primeCat_Event_id Then
+				temp_primeCat = RS.Fields("PrimeCatID")
+				Exit Do
+			End If
+			RS.MoveNext
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+
+	get_primeCatID_F = temp_primeCat
+End Function
+
+Function get_secondCatID_F(secondCat_Event_id)
+	dim temp_secondCat
+	
+	If secondCat_Event_id = 0 Then
+		temp_secondCat = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Event"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		dim blah
+		
+		If NOT RS.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("EventID") = secondCat_Event_id Then
+				temp_secondCat = RS.Fields("SecondCatID")
+				Exit Do
+			End If
+			RS.MoveNext
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+
+	get_secondCatID_F = temp_secondCat
+End Function
+
+Function update_status_F(status_Event_id,update_status)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT RS.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = status_Event_id Then
+			RS.Fields("StatusID") =  update_status
+			RS.Update
+			Exit Do
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function update_EventDesc_F(status_Event_id,update_desc)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT RS.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = status_Event_id Then
+			RS.Fields("EventDesc") =  update_desc
+			RS.Update
+			Exit Do
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function get_Priority_F(num)
+	dim temp
+	
+	If num = 0 Then
+		temp = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from Priority"
+		
+		RS.Open SQL,CN,adOpenPriorityic,adLockOptimistic
+		
+		If NOT rs.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("PriorityID") = num Then
+				temp = RS.Fields("PriorityName")
+				If RS.Fields("PriorityDeleted") = True Then
+					temp = "<span id=""Priority_color"" class=""red"">" & temp & "</span>"
+				End If
+				Exit Do
+			Else
+				RS.MoveNext
+			End If
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+	
+	get_Priority_F = temp
+End Function
+
+Function get_Desc_F(num)
+	Dim temp
+	
+	Dim CN, RS, SQL
+	Set CN = CreateObject("ADODB.Connection")
+	Set RS = CreateObject("ADODB.Recordset")
+	CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+		'; Jet OLEDB:Database Password=MyDbPassword;"
+	
+	SQL = "Select * from Event"
+	
+	RS.Open SQL,CN,adOpenPriorityic,adLockOptimistic
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = num Then
+			temp = RS.Fields("EventDesc")
+			Exit Do
+		Else
+			RS.MoveNext
+		End If
+	Loop
+	
+	RS.Close
+	CN.Close
+	Set CN = Nothing
+	Set RS = Nothing
+	
+	get_Desc_F = temp
+End Function
+
+Function update_Priority_F(Priority_Event_id,update_Priority)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenPriorityic,adLockOptimistic
+	
+	If NOT RS.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = Priority_Event_id Then
+			RS.Fields("PriorityID") =  update_Priority
+			RS.Update
+			Exit Do
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function get_PrimeCat_F(num)
+	dim temp
+	
+	If num = 0 Then
+		temp = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from PrimeCat"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		If NOT rs.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("PrimeCatID") = num Then
+				temp = RS.Fields("PrimeCatName")
+				If RS.Fields("PrimeCatDeleted") = True Then
+					temp = "<span id=""Cat_color"" class=""red"">" & temp & "</span>"
+				End If
+				Exit Do
+			Else
+				RS.MoveNext
+			End If
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+	
+	get_PrimeCat_F = temp
+End Function
+
+Function update_PrimeCat_F(PrimeCat_Event_id,update_PrimeCat)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT RS.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = PrimeCat_Event_id Then
+			RS.Fields("PrimeCatID") =  update_PrimeCat
+			RS.Update
+			Exit Do
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function get_SecondCat_F(num)
+	dim temp
+	
+	If num = 0 Then
+		temp = "None"
+	Else
+		Dim CN, RS, SQL
+		Set CN = CreateObject("ADODB.Connection")
+		Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+			'; Jet OLEDB:Database Password=MyDbPassword;"
+		
+		SQL = "Select * from SecondCat"
+		
+		RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+		
+		If NOT rs.EOF Then RS.MoveFirst
+		Do Until RS.EOF
+			If RS.Fields("SecondCatID") = num Then
+				temp = RS.Fields("SecondCatName")
+				If RS.Fields("SecondCatDeleted") = True Then
+					temp = "<span id=""Cat_color"" class=""red"">" & temp & "</span>"
+				End If
+				Exit Do
+			Else
+				RS.MoveNext
+			End If
+		Loop
+		
+		RS.Close
+		CN.Close
+		Set CN = Nothing
+		Set RS = Nothing
+	End If
+	
+	get_SecondCat_F = temp
+End Function
+
+Function update_SecondCat_F(SecondCat_Event_id,update_SecondCat)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT RS.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = SecondCat_Event_id Then
+			RS.Fields("SecondCatID") =  update_SecondCat
+			RS.Update
+			Exit Do
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function update_tech_F(status_Event_id,update_tech)
+	Dim CN, RS, SQL
+    Set CN = CreateObject("ADODB.Connection")
+    Set RS = CreateObject("ADODB.Recordset")
+    CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+    
+    SQL = "Select * from Event"
+    
+    RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT RS.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = status_Event_id Then
+			RS.Fields("TechID") =  update_tech
+			RS.Update
+			Exit Do
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+End Function
+
+Function Add_Data_F(Event_id)
+	newDataTech = document.getElementByID("add_data_tech_select").value
+	tempTech = get_techID_F(Event_id)
+	newDataStatus = document.getElementByID("update_status_select").value
+	tempStatus = get_statusID_F(Event_id)
+	newDataPriority = document.getElementByID("update_Priority_select").value
+	tempPriority = get_PriorityID_F(Event_id)
+	newDataPrimeCat = document.getElementByID("primecat_select").value
+	tempPCat = get_PrimeCatID_F(Event_id)
+	newDataSecondCat = document.getElementByID("secondcat_select").value
+	tempSCat = get_SecondCatID_F(Event_id)
+	newDataDesc = document.getElementByID("edit_Event_desc_text").value
+	tempDesc = get_Desc_F(Event_id)
+	
+	updateDataTech = document.getElementByID("update_data_tech_select").value
+	newDataUpdates = document.getElementByID("add_data_text").value
+	
+	StartDateT = Day(DateAdd("d",-10,Now)) & "/" & MonthName(Month(DateAdd("d",-10,Now))) & "/" & Year(DateAdd("d",-10,Now))
+	EndDateT = Day(Now) & "/" & MonthName(Month(Now)) & "/" & Year(Now)
+	
+	change = 0
+	tempUpdate = "<br /><br />CHANGED &nbsp;"
+	
+	If newDataUpdates = "" Then
+		update_alert.InnerHTML = "<span id=""update_alert_color"" class=""red"">Please enter an update.</span>"
+	ElseIf newDataStatus = 0 Then
+		update_alert.InnerHTML = "<span id=""update_alert_color"" class=""red"">Please select a status.</span>"
+	ElseIf updateDataTech = 0 Then
+		update_alert.InnerHTML = "<span id=""update_alert_color"" class=""red"">Please select a technician.</span>"
+	ElseIf newDataDesc = "" Then
+		update_alert.InnerHTML = "<span id=""update_alert_color"" class=""red"">Please enter a description.</span>"
+	Else
+		If CInt(newDataStatus) <> CInt(tempStatus) Then
+			tempUpdate = tempUpdate & "Status: " & get_Stat_F(CInt(newDataStatus)) & "&nbsp;-&nbsp;"
+			call update_status_F(Event_id,newDataStatus)
+			menu_selected = newDataStatus
+			change = 1
+		End If
+		If CInt(newDataPriority) <> CInt(tempPriority) Then
+			tempUpdate = tempUpdate & "Priority: " & get_Priority_F(CInt(newDataPriority)) & "&nbsp;-&nbsp;"
+			call update_priority_F(Event_id,newDataPriority)
+			change = 1
+		End If
+		If CInt(newDataTech) <> CInt(tempTech) Then
+			tempUpdate = tempUpdate & "Tech: " & get_Tech_F(CInt(newDataTech)) & "&nbsp;-&nbsp;"
+			call update_tech_F(Event_id,newDataTech)
+			change = 1
+		End If
+		If CInt(newDataPrimeCat) <> CInt(tempPCat) Then
+			tempUpdate = tempUpdate & "Prime Cat: " & get_PrimeCat_F(CInt(newDataPrimeCat)) & "&nbsp;-&nbsp;"
+			call update_PrimeCat_F(Event_id,newDataStatus)
+			change = 1
+		End If
+		If CInt(newDataSecondCat) <> CInt(tempSCat) Then
+			tempUpdate = tempUpdate & "Sub Cat: " & get_SecondCat_F(CInt(newDataSecondCat)) & "&nbsp;-&nbsp;"
+			call update_SecondCat_F(Event_id,newDataSecondCat)
+			change = 1
+		End If
+		If newDataDesc <> tempDesc Then
+			tempUpdate = tempUpdate & "Desc: " & newDataDesc
+			call update_EventDesc_F(Event_id,newDataDesc)
+			change = 1
+		End If
+		
+		Dim CN, RS, SQL
+        Set CN = CreateObject("ADODB.Connection")
+        Set RS = CreateObject("ADODB.Recordset")
+		CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+        
+        SQL = "Select * from Updates"
+        
+        RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+			
+		If NOT RS.EOF Then RS.MoveLast
+		
+        If RS.EOF Then
+            lastID = 0
+        Else
+            RS.MoveLast
+            lastID = RS.Fields("UpdateID")
+        End If
+        temp = CInt(lastID) + 1
+        
+		RS.AddNew
+		RS("UpdateID") = temp
+        RS("UpdateDate") = Now
+        RS("EventID") =  Event_id
+		RS("TechID") = updateDataTech
+		If change = 1 Then
+			RS("UpdateData") =  newDataUpdates & tempUpdate
+		Else
+			RS("UpdateData") = newDataUpdates
+		End If
+		
+		RS.Update
+		
+        RS.Close
+        CN.Close
+        Set CN = Nothing
+        Set RS = Nothing
+		
+		Update_Dates_F(Event_id)
+		
+		clear_all_S
+		
+		call list_Events_F(Event_id,"*","Event",StartDateT,EndDateT,menu_selected,0,0,0,0,"","EventDate","","")
+	End If
+End Function
+
+Function Update_Dates_F(EventID)
+    Dim CN, RS, SQL
+	Set CN = CreateObject("ADODB.Connection")
+	Set RS = CreateObject("ADODB.Recordset")
+	CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+		'; Jet OLEDB:Database Password=MyDbPassword;"
+
+	SQL = "SELECT * FROM Event WHERE EventID = " & EventID
+
+	RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	'dim textText
+	
+	If NOT rs.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		RS("EventDate") = LastModified_F(RS.Fields("EventID"))
+		RS.Update
+		
+		'textText = RS("EventDate") & " - " & LastModified_F(RS.Fields("EventID"))
+		
+		RS.MoveNext
+	Loop
+	
+	RS.Close
+    CN.Close
+	Set CN = Nothing
+    Set RS = Nothing
+	
+	'testing.InnerHTML = textText
+End Function
+
+Function LastModified_F(EventID)
+	Dim CN, RS, SQL
+	Set CN = CreateObject("ADODB.Connection")
+	Set RS = CreateObject("ADODB.Recordset")
+	CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+	'; Jet OLEDB:Database Password=MyDbPassword;"
+	
+	dim textText
+	
+	SQL = "Select * FROM Updates WHERE EventID = " & EventID
+	
+	RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	Dim temp
+	If NOT RS.EOF Then RS.MoveLast
+	temp = RS.Fields("UpdateDate")
+	
+	textText = RS.Fields("UpdateDate") & " - " & RS.Fields("UpdateID")
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	LastModified_F = temp
+	
+	testing.InnerHTML = textText
+End Function
+
+Function eventCreated_F(EventID)
+	Dim CN, RS, SQL
+	Set CN = CreateObject("ADODB.Connection")
+	Set RS = CreateObject("ADODB.Recordset")
+	CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+	'; Jet OLEDB:Database Password=MyDbPassword;"
+	
+	SQL = "Select UpdateDate FROM Updates WHERE EventID = " & EventID
+	
+	RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	Dim temp
+	If NOT RS.EOF Then RS.MoveFirst
+	temp = RS.Fields("UpdateDate")
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	LastModified_F = temp
+End Function
+
+Function CreatedOn_F(EventID)
+	Dim CN, RS, SQL
+	Set CN = CreateObject("ADODB.Connection")
+	Set RS = CreateObject("ADODB.Recordset")
+	CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+	'; Jet OLEDB:Database Password=MyDbPassword;"
+	
+	SQL = "Select UpdateDate FROM Updates WHERE EventID = " & EventID
+	
+	RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	Dim temp
+	If NOT RS.EOF Then RS.MoveFirst
+	temp = RS.Fields("UpdateDate")
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+	CreatedOn_F = temp
+End Function
+
+Function get_data_F(num)
+	Dim CN, RS, SQL
+        Set CN = CreateObject("ADODB.Connection")
+        Set RS = CreateObject("ADODB.Recordset")
+        CN.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ".mdb" _
+        '; Jet OLEDB:Database Password=MyDbPassword;"
+        
+        SQL = "Select * from Updates"
+        
+        RS.Open SQL,CN,adOpenStatic,adLockOptimistic
+	
+	If NOT RS.EOF Then RS.MoveFirst
+	Do Until RS.EOF
+		If RS.Fields("EventID") = num Then
+			datetemp = ConvertDate_F(RS.Fields("UpdateDate"),1)
+            
+            temp = temp & RS.Fields("UpdateData") & "<br /> -" & get_tech_F(RS.Fields("TechID")) & " @ " & datetemp & "<br /><hr size=1>"
+		End If
+		RS.MoveNext
+	Loop
+	
+    RS.Close
+    CN.Close
+    Set CN = Nothing
+    Set RS = Nothing
+	
+    temp = Replace(temp, vbCrLf, "<br />")
+    
+	get_data_F = temp
+End Function
+
+Function ConvertDate_F(temp,opt)
+    If opt Then
+        datetemp = Day(temp) & UCase(MonthName(Month(temp),True)) & Year(temp) & " " & FormatDateTime(temp,4)
+    Else
+        datetemp = Day(temp) & UCase(MonthName(Month(temp),True)) & Year(temp)
+    End If
+    
+    ConvertDate_F = datetemp
+End Function
+
+Function select_Date_F(temp,opt)
+	DaySelect = "<select class=""Day_" & temp & "_select"" id=""Day_" & temp & "_select"">"
+	MonthSelect = "<select class=""Month_" & temp & "_select"" id=""Month_" & temp & "_select"">"
+	YearSelect = "<select class=""Year_" & temp & "_select"" id=""Year_" & temp & "_select"">"
+	
+	Dim j : j = 1
+	
+	Do Until j = 32
+	  	If opt = 1 Then
+			If j = Day(DateAdd("d",-5,Now)) Then
+				DaySelect = DaySelect & "<option value=""" & j & """ selected=selected>" & j & "</option>"
+			Else
+				DaySelect = DaySelect & "<option value=""" & j & """>" & j & "</option>"
+			End If
+		Else
+			If j = Day(Now) Then
+				DaySelect = DaySelect & "<option value=""" & j & """ selected=selected>" & j & "</option>"
+			Else
+				DaySelect = DaySelect & "<option value=""" & j & """>" & j & "</option>"
+			End If
+		End If
+		j = j + 1
+	Loop
+	
+	j = 1
+	
+	Do Until j = 13
+	  	If opt = 1 Then
+			If j = Month(DateAdd("d",-5,Now)) Then
+				MonthSelect = MonthSelect & "<option value=""" & j & """ selected=selected>" & j & "</option>"
+			Else
+				MonthSelect = MonthSelect & "<option value=""" & j & """>" & j & "</option>"
+			End If
+		Else
+			If j = Month(Now) Then
+				MonthSelect = MonthSelect & "<option value=""" & j & """ selected=selected>" & j & "</option>"
+			Else
+				MonthSelect = MonthSelect & "<option value=""" & j & """>" & j & "</option>"
+			End If
+		End If
+		j = j + 1
+	Loop
+	
+	j = 2013
+	
+	Do Until j = Year(Now) + 1
+	  	If opt = 1 Then
+			If j = Year(DateAdd("d",-5,Now)) Then
+				YearSelect = YearSelect & "<option value=""" & j & """ selected=selected>" & j & "</option>"
+			Else
+				YearSelect = YearSelect & "<option value=""" & j & """>" & j & "</option>"
+			End If
+		Else
+			If j = Year(Now) Then
+				YearSelect = YearSelect & "<option value=""" & j & """ selected=selected>" & j & "</option>"
+			Else
+				YearSelect = YearSelect & "<option value=""" & j & """>" & j & "</option>"
+			End If
+		End If
+		j = j + 1
+	Loop
+	
+	j = 1
+	
+	DaySelect = DaySelect & "</select>"
+	MonthSelect = MonthSelect & "</select>"
+	YearSelect = YearSelect & "</select>"
+	
+	DateSelect = "Day: " & DaySelect & " Month: " & MonthSelect & " Year :" & YearSelect
+	
+	select_Date_F = DateSelect
+End Function
+
+</script>
+
+<body>
+
+<div id="title_bar" class="title_bar">
+	<input class="button" type="button" value="Main Menu" id="Main_Menu_B"  onClick="MainMenu_S">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input class="button" type="button" value="Open Events" id="Open_Events_B"  onClick="OpenEvents_S">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input class="button" type="button" value="Recent Events" id="Recent_Events_B"  onClick="RecentEvents_S">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span id="title_heading" class="title_heading">Main Menu</span>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input class="button" type="button" value="Exit" id="exit_button"  onClick="Exit_S">
+</div>
+<br />
+<div id="main_window" class="main_window">
+<div id="top_window" class="top_window"></div>
+<br />
+<div id="middle_window" class="middle_window"></div>
+<br />
+<div id="bottom_window" class="bottom_window"></div>
+<br />
+<div id="testing" class="testing"></div>
+<br />
+</body>
+</html>

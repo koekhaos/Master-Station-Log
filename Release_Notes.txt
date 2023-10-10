@@ -1,0 +1,98 @@
+Coming Soon
+	- Increased performance and validation checks
+	- More detailed alerts
+	- Alerts system
+	- Individual Check Off System
+	- Notifications in the Title Bar
+	- Ability to edit/delete data entries and tickets
+	- Ability to create database from scratch if none present
+	- Database archival feature
+	- Sorting of reports
+	- Knowledgebase Section
+
+1.1.10a- Minor Feature
+	- Added checkbox to include unused(zero) counts in the report summary.
+
+1.1.10 - New Feature
+	- Reports now has a summary and detailed section. You can turn the detailed report on or off.
+
+1.1.9a - Minor bug fix
+	- Fixed a bug where events were adding a changed description modifier to updates whether the description was changed or not.
+
+1.1.9 - New Feature
+	- You can now modify descriptions.
+	Minor New Feature
+	- Added total event counter to listed events view.
+	Temporary changes
+	- Hard coded reports to a desired format for now until a more permament dynamic solution can be made.
+
+1.1.8 - New Feature
+	- You can now search descriptions and updates for keyword(s)
+
+1.1.7 - Minor New Features
+	- Added temporary hard-coded Open Events and Recent Events buttons to the top bar. Open Events is All Open Events and Recent Events is previous 5 days.
+       -Minor Changes
+	- Reduced Recent Events in List Events to 5 days.
+
+1.1.6b - Minor changes
+	- Reworded select defaults for techs, status, and priorities. Other misc rewordings.
+
+1.1.6a - Minor Bug Fix
+	- Possible fix for "Error: Object required: 'obj'"
+
+1.1.6 - New Features
+	- Listing events now has many more options includig sorting and finding keywords by description.
+	- Now runs off SQL queries instead of iterating through the entire database.
+
+1.1.5 - Minor Bug Fixes
+	- Date in ticket list now shows Date Modified.
+	- When updates are made, the last modified date is now updated correctly.
+
+1.1.4 - New Features
+	- Added basic reports functionality.
+
+1.1.3 - Changes
+	- Can now assign none as a Prime category and choose all from Prime categories to list all Sub Categories.
+	- All changes are now added to an update including: categories, technician, status, and priority.
+	- Slight increase to width of many inputs and lists.
+	- Increased the size of a new data input text area.
+	- Nudged event list over from Date by 5 pixels.
+	- New Tickets and Edited tickets now have an option for both assigned tech and the posting tech.
+
+1.1.2 - Bug Fixes
+	- Elements now selected properly from all list selections.
+	- Fixed problem with Status updates which caused above issue.
+
+1.1.1 -	New Features
+	- Event list now adjusts in size to what is displayed.
+	- Old data is now displayed again with new data selection.
+	- Lists events and selects Event after New Event or Data Update to Event.
+
+1.1 -	Major Changes:
+	- Upgraded system to Access Database
+	- Added dynamic Statuses
+	- Added Primary and Secondary Categories
+	- Added Priorities
+	- Upgraded Technicians
+	- Increased viewability of listed Events
+	- Added ability to see only recent Events
+	- Database includes future features for expansion
+	- Added dynamic selection of viewable events
+	- Cleaned up a lot of code
+
+1.0.2 - Bug Fixes:
+	- Moved new update validation alert to proper location next to button.
+	- Updates no longer shown when status is changed on page refresh after adding new data.
+
+1.0.1 -	New Features:
+	- Added Icon.
+	- Added horizontal rules between updates.
+	- Added Updates box to new ticket.
+	- Button to view Release Notes.
+	Bug Fixes:
+	- Updates span now word wraps properly and maintains newlines.
+	- Add update span now word wraps properly.
+	- Ticket descriptions no longer wrap or break formatting.
+	- Fixed a typo on new ticket validation.
+
+1.0 -	Initial release.

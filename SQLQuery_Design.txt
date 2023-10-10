@@ -1,0 +1,25 @@
+SELECT (Column) FROM (Table) 
+
+WHERE
+
+(Date) BETWEEN (StartDate) AND (EndDate)
+
+AND (StatusID) = (Status)
+AND (PriorityID) = (Priority)
+AND (TechID) = (Tech)
+AND (PrimeCatID) = (PCat)
+AND (SecondCatID) = (SCat)
+
+AND (Description) LIKE '%(keyword)%';
+
+AND (Update) LIKE '%(keyword)%';
+
+ORDER BY (Column),(Column) ASC|DESC;
+
+
+list_Events_F(event_sel,column_sel,table_sel,startDate,endDate,status,priority,tech,
+p_cat,s_cat,find_desc,find_update,sort1,sort2,sort_dir)
+
+(0,"*","Event",StartDate,EndDate,Status,Priority,Tech,PCat,SCat,FindDesc,"",Sort1,Sort2,SortDir)
+
+19/Apr/2014

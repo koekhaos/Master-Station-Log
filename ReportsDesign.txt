@@ -1,0 +1,10 @@
+Event Report  From: StartDate To: EndDate
+Total Events: EventTotal  Open: Closed: Info: Etc:
+Critical: High: Med: Low:
+Each Category:
+
+<Next page>
+Event ID:  Date: Status: Priority: PCat: SCat: Tech: Desc:
+List all Event Updates:
+<HR>
+Next event... etc.
